@@ -4,7 +4,7 @@ This repository contains my personal portfolio website built using HTML, CSS, an
 It includes my introduction, skills, projects, certifications, and contact details as a Software Engineering Undergraduate at the University of Kelaniya.
 
 ## Live Website
-https://dulanachathurma.github.io/My-Personal-Portfolio-Website/
+https://dulanachathurma.github.io/My-Portfolio/
 
 ## About Me
 I am Dulana Chathurma, an undergraduate student pursuing a B.Sc. (Honours) in Software Engineering.  
