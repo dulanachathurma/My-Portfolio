@@ -385,52 +385,27 @@
         }
 
         .profile-img {
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             margin: 0 auto 2rem;
             border: 6px solid var(--card-bg);
             box-shadow: var(--shadow);
             overflow: hidden;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-color: var(--gray-light);
             animation: float 6s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            z-index: -1;
-            opacity: 0.7;
-            animation: rotate 10s linear infinite;
         }
 
         @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
         .profile-img img {
-            width: 95%;
-            height: 95%;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 4px solid var(--card-bg);
         }
 
         .hero h1 {
@@ -1130,12 +1105,6 @@
                 width: 45px;
                 height: 45px;
             }
-
-            /* Adjust profile image for mobile */
-            .profile-img {
-                width: 180px;
-                height: 180px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1171,12 +1140,6 @@
             
             .theme-toggle i {
                 font-size: 1.2rem;
-            }
-
-            /* Adjust profile image for small screens */
-            .profile-img {
-                width: 150px;
-                height: 150px;
             }
         }
     </style>
@@ -1222,8 +1185,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="profile-img">
-                    <!-- Replace this with your actual profile image -->
-                    <img src="dulana-profile-circle.jpg" alt="Dulana Chathurma" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjM2NmYxIi8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iODAiIHI9IjQwIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC44Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMTAiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI2MCIgcj0iMTAiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz48cGF0aCBkPSJNNjAgMTIwIHE0MCAyMCA4MCAwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIj5EQzwvdGV4dD48L3N2Zz4='">
+                    <img src="dulana-profile-circle.jpg" alt="Dulana Chathurma">
                 </div>
                 <h1>I'm Dulana Chathurma</h1>
                 <div class="auto-type">
@@ -1245,7 +1207,6 @@
         </div>
     </section>
 
-    <!-- Rest of your HTML content remains the same -->
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -1262,8 +1223,384 @@
         </div>
     </section>
 
-    <!-- Education, Experience, Skills, Projects, Certificates, Articles, and Contact sections remain the same -->
-    <!-- ... -->
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <!-- University Education -->
+                <div class="education-card card">
+                    <div class="education-img">
+                        <img src="education-software-engineering.jpg" alt="Software Engineering">
+                    </div>
+                    <div class="education-details">
+                        <h3>BSc (Honours) in Software Engineering</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> Mar 2025 - Apr 2029</p>
+                        <div class="education-skills">
+                            <div class="skill-tag">Mathematics for Computing</div>
+                            <div class="skill-tag">Communication Skills with English</div>
+                            <div class="skill-tag">C language</div>
+                            <div class="skill-tag">Database and development</div>
+                            <div class="skill-tag">PHP Frameworks</div>
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">CSS</div>
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">PHP</div>
+                            <div class="skill-tag">Java</div>
+                            <div class="skill-tag">PMAT</div>
+                            <div class="skill-tag">Data structures and algorithm</div>
+                            <div class="skill-tag">MySQL</div>
+                            <div class="skill-tag">Statistical Data Analysis</div>
+                            <div class="skill-tag">HTML</div>
+                            <div class="skill-tag">OOP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A/L Education -->
+                <div class="education-card card">
+                    <div class="education-img">
+                        <img src="education-al.jpg" alt="G.C.E Advanced Level">
+                    </div>
+                    <div class="education-details">
+                        <h3>G.C.E Advanced Level Examination 2023(2024)</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> H/ Rajapaksa National College, Weeraketiya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2023 (2024)</p>
+                        <div class="education-skills">
+                            <div class="skill-tag">Combined Mathematics: A</div>
+                            <div class="skill-tag">Physics: B</div>
+                            <div class="skill-tag">Chemistry: B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <!-- Experience 1 -->
+                <div class="experience-card card">
+                    <div class="experience-img">
+                        <img src="experience-gavel-club.jpg" alt="Gavel Club">
+                    </div>
+                    <div class="experience-details">
+                        <h3>Gavel Club - University of Kelaniya</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Kelaniya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2023 - Present</p>
+                        <div class="experience-description">
+                            <p>Faculty Coordinator for social services, organizing events and activities that benefit the community.</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/overlay/1759575211729/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" class="btn btn-secondary btn-small">View Photo</a>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="experience-card card">
+                    <div class="experience-img">
+                        <img src="experience-environmental-authority.jpg" alt="Environmental Authority">
+                    </div>
+                    <div class="experience-details">
+                        <h3>Central Environmental Authority, Sri Lanka</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Beliatta, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2020 - 2022</p>
+                        <div class="experience-description">
+                            <p>School Environmental Pioneer Service Group member at H/Beliatta National College Environmental Pioneer Team. Achieved 3 ranking logos for outstanding contributions.</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/overlay/volunteering-experiences/551584802/multiple-media-viewer?profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&treasuryMediaId=1759629930845&type=IMAGE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" class="btn btn-secondary btn-small">View Photo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-java.png" alt="Java">
+                    </div>
+                    <h4>Java</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-python.png" alt="Python">
+                    </div>
+                    <h4>Python</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-c-language.png" alt="C">
+                    </div>
+                    <h4>C</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-javascript.png" alt="JavaScript">
+                    </div>
+                    <h4>JavaScript</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-html-css.png" alt="HTML">
+                    </div>
+                    <h4>HTML</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-html-css1.png" alt="CSS">
+                    </div>
+                    <h4>CSS</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-ai-ml.png" alt="AI/ML">
+                    </div>
+                    <h4>AI / ML</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-mysql.png" alt="MySQL">
+                    </div>
+                    <h4>MySQL</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-todo-app.jpg" alt="Todo App">
+                    </div>
+                    <h3>Todo App</h3>
+                    <p>A clean Todo App built using Java and PostgreSQL.</p>
+                    <div class="project-tools">
+                        <div class="tool">Java</div>
+                        <div class="tool">PostgreSQL</div>
+                    </div>
+                    <a href="https://github.com/dulanachathurma/Todo-App" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-atm-system.jpg" alt="ATM Mini Project">
+                    </div>
+                    <h3>ATM Mini Project</h3>
+                    <p>ATM simulation program using C, functions, switch cases, and complete banking logic.</p>
+                    <div class="project-tools">
+                        <div class="tool">C</div>
+                        <div class="tool">Banking Logic</div>
+                    </div>
+                    <a href="https://github.com/dulanachathurma/ATM-Bank-Project-System" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2>Certificates</h2>
+            <div class="certificates-grid">
+                <!-- Certificate 2 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-online-courses.jpg" alt="Online Certification Course">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">Online Certification</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Moratuwa, Sri Lanka</p>
+                    <p><i class="far fa-calendar-alt"></i> Oct 2025 - Jan 2027</p>
+                    <div class="certificate-description">
+                        Specialized programming courses through Open Learning platform focusing on Python development and software engineering principles.
+                    </div>
+                    <div class="certificate-skills">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">Python Calculator projects</div>
+                        <div class="skill-tag">Software Development Process</div>
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760078706159/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">Python Certificate</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760542828732/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">Web Design</a>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-english-diploma.jpg" alt="Diploma in English">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">English Diploma</span>
+                        </div>
+                    </div>
+                    <h3>Diploma in English (CERF Level B1)</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dekma Institute Matara, Sri Lanka</p>
+                    <p><i class="far fa-calendar-alt"></i> Jun 2024 - Dec 2024</p>
+                    <div class="certificate-description">
+                        Comprehensive English language program focusing on communication skills, writing proficiency, and spoken English at CERF B1 level.
+                    </div>
+                    <div class="certificate-skills">
+                        <div class="skill-tag">Communication with English</div>
+                        <div class="skill-tag">Writing English</div>
+                        <div class="skill-tag">Spoken English</div>
+                        <div class="skill-tag">Speaking English</div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1759555692945/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">View Certificate</a>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-udemy-courses.jpg" alt="Udemy Courses">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">Udemy Courses</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course - Udemy</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Udemy Online Platform</p>
+                    <div class="certificate-description">
+                        Comprehensive collection of Udemy courses covering Generative AI, Machine Learning, Full Stack Development, and programming fundamentals.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760150187955/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BDubgJCizTqu4iim9ZWnxhg%3D%3D" class="btn btn-secondary btn-small">Generative AI</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760115066662/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BDubgJCizTqu4iim9ZWnxhg%3D%3D" class="btn btn-secondary btn-small">AI Chatbot</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760245029797/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">HTML/CSS/JS</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760112578435/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Machine Learning</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760116627651/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Java</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760118169750/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Full Stack</a>
+                    </div>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-hackerrank.jpg" alt="HackerRank Certifications">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">HackerRank</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course - HackerRank</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> HackerRank Platform</p>
+                    <div class="certificate-description">
+                        Programming challenges and skill assessments demonstrating proficiency in problem-solving and coding abilities.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.hackerrank.com/certificates/iframe/26a32f7f5087" class="btn btn-secondary btn-small">Certificate 1</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1763221677010/single-media-viewer?type=DOCUMENT&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Certificate 2</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <h2>My Web Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-cia-triad.jpg" alt="CIA Triad Article">
+                    </div>
+                    <h3>CIA Triad: Safeguarding Our Information</h3>
+                    <p>An exploration of the fundamental principles of information security - Confidentiality, Integrity, and Availability.</p>
+                    <a href="https://medium.com/@dulanachathurma99/cia-triad-safeguarding-our-inforation-576563e3dbd3" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-elephant-warning-system.jpg" alt="Elephant Warning System Article">
+                    </div>
+                    <h3>🐘 Elephant Early Warning System in Railway Transport</h3>
+                    <p>How technology is being used to prevent elephant-train collisions in Sri Lanka.</p>
+                    <a href="https://medium.com/@dulanachathurma99/elephant-early-warning-system-in-railway-transport-5b7149200a8c" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.207289909686!2d80.75844177499636!3d6.049260593952773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae142b6c8b5b5a5%3A0x8a0b8c8c8c8c8c8c!2sKopiwatta%2C%20Getamanna%2C%20Beliatta!5e0!3m2!1sen!2slk!4v1690000000000!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="contact-details">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always open to collaborations. Don't hesitate to connect, even if it's just to say hello.</p>
+                    
+                    <div class="contact-info">
+                        <h4>My Address</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Kopiwatta, Getamanna, Beliatta, Hambantota District, Sri Lanka</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+94 76 75 74 844</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dulanachathurma99@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-icons">
+                        <a href="mailto:dulanachathurma99@gmail.com" class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                            <span class="contact-label">Email</span>
+                        </a>
+                        <a href="https://linkedin.com/in/dulana-chathurma" class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span class="contact-label">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/dulanachathurma" class="contact-icon">
+                            <i class="fab fa-github"></i>
+                            <span class="contact-label">GitHub</span>
+                        </a>
+                        <a href="https://medium.com/@dulanachathurma99" class="contact-icon">
+                            <i class="fab fa-medium-m"></i>
+                            <span class="contact-label">Medium</span>
+                        </a>
+                        <a href="https://wa.me/94767574844" class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="contact-label">WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">DC</div>
+                <p class="copyright">© 2025 Dulana Chathurma. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Dark/Light Mode Toggle
