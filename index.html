@@ -372,10 +372,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('background.jpg');
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             z-index: -1;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .hero-content {
@@ -411,8 +421,8 @@
         .hero h1 {
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
-            color: var(--text-color);
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .hero p {
@@ -420,9 +430,9 @@
             max-width: 700px;
             margin: 0 auto 2rem;
             animation: fadeInUp 1s ease 0.2s both;
-            color: var(--text-color);
+            color: white;
             font-weight: 500;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         .auto-type {
@@ -434,17 +444,17 @@
 
         .typed-text {
             font-weight: 500;
-            color: var(--text-color);
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         .cursor {
             display: inline-block;
             width: 3px;
             margin-left: 2px;
-            background-color: var(--text-color);
+            background-color: white;
             animation: blink 1s infinite;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         @keyframes blink {
@@ -1380,6 +1390,7 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
+                <!-- Todo App Project -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-todo-app.jpg" alt="Todo App">
@@ -1392,6 +1403,8 @@
                     </div>
                     <a href="https://github.com/dulanachathurma/Todo-App" class="btn btn-primary btn-small">View on GitHub</a>
                 </div>
+                
+                <!-- ATM Mini Project -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-atm-system.jpg" alt="ATM Mini Project">
@@ -1403,6 +1416,24 @@
                         <div class="tool">Banking Logic</div>
                     </div>
                     <a href="https://github.com/dulanachathurma/ATM-Bank-Project-System" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+                
+                <!-- NEW TravelScope Project -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-travelscope.jpg" alt="TravelScope Website">
+                    </div>
+                    <h3>TravelScope Website</h3>
+                    <p>A comprehensive travel platform showcasing Sri Lanka's beauty, built with modern web technologies.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Google Maps API</div>
+                    </div>
+                    <p>This project represents my passion for both technology and promoting Sri Lankan tourism. It's more than just a web app - it's a digital journey through our beautiful country!</p>
+                    <a href="https://dulanachathurma.github.io/TravelScope/" class="btn btn-primary btn-small">View Website</a>
                 </div>
             </div>
         </div>
