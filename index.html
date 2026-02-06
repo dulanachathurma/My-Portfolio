@@ -216,12 +216,11 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        /* Dark Mode Toggle - Center aligned for mobile */
+        /* Dark Mode Toggle - Positioned at top right of home page */
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 100px;
+            right: 30px;
             z-index: 1002;
             background: var(--card-bg);
             border-radius: 50%;
@@ -236,7 +235,7 @@
         }
 
         .theme-toggle:hover {
-            transform: translateX(-50%) scale(1.1);
+            transform: scale(1.1);
         }
 
         .theme-toggle i {
@@ -281,7 +280,7 @@
             }
         }
 
-        /* Header & Navigation - FIXED for mobile */
+        /* Header & Navigation */
         header {
             position: fixed;
             top: 0;
@@ -354,8 +353,6 @@
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
         }
 
         /* Hero Section */
@@ -1034,7 +1031,7 @@
             }
         }
 
-        /* Responsive Design - MOBILE FIRST APPROACH */
+        /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
                 font-size: 2.8rem;
@@ -1062,27 +1059,22 @@
         }
 
         @media (max-width: 768px) {
-            /* Mobile Navigation */
             .hamburger {
                 display: block;
-                z-index: 1003;
             }
             
             .nav-links {
                 position: fixed;
-                top: 0;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                height: 100vh;
                 background: var(--card-bg);
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
                 padding: 2rem 0;
                 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
+                transform: translateY(-150%);
                 transition: var(--transition);
-                z-index: 1002;
             }
             
             .nav-links.active {
@@ -1091,7 +1083,6 @@
             
             .nav-links li {
                 margin: 1rem 0;
-                font-size: 1.2rem;
             }
             
             .btn-group {
@@ -1117,11 +1108,10 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Theme toggle for mobile - centered */
+            /* Move theme toggle for mobile */
             .theme-toggle {
                 top: 90px;
-                left: 50%;
-                transform: translateX(-50%);
+                right: 20px;
                 width: 45px;
                 height: 45px;
             }
@@ -1154,11 +1144,6 @@
                 font-size: 0.8rem;
                 padding: 6px 12px;
             }
-            
-            /* Add padding to prevent content from hiding under fixed elements */
-            section {
-                padding: 120px 0 80px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1171,7 +1156,7 @@
             }
             
             section {
-                padding: 100px 0 60px;
+                padding: 70px 0;
             }
             
             .projects-grid,
@@ -1187,6 +1172,7 @@
             /* Adjust theme toggle for small screens */
             .theme-toggle {
                 top: 85px;
+                right: 15px;
                 width: 40px;
                 height: 40px;
             }
@@ -1231,11 +1217,6 @@
                 font-size: 0.6rem;
                 bottom: -25px;
             }
-            
-            /* Auto-type text size for mobile */
-            .typed-text {
-                font-size: 0.9rem;
-            }
         }
 
         /* Very small devices */
@@ -1267,35 +1248,11 @@
                 height: 45px;
                 font-size: 1.1rem;
             }
-            
-            /* Navigation font size for very small devices */
-            .nav-links li {
-                font-size: 1rem;
-            }
-        }
-        
-        /* Prevent horizontal scrolling */
-        body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-        
-        /* Improve touch targets for mobile */
-        .btn, .contact-icon, .tag {
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Better spacing for mobile */
-        .nav-links li {
-            padding: 10px 0;
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle - Centered for mobile -->
+    <!-- Dark Mode Toggle - Positioned at top right of home page -->
     <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
     </div>
@@ -1953,45 +1910,19 @@
             createSnow();
         });
 
-        // Mobile Navigation Toggle - FIXED
+        // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
-            // Toggle hamburger icon
-            const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
         });
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
             });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('active') && 
-                !navLinks.contains(e.target) && 
-                !hamburger.contains(e.target)) {
-                navLinks.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
         });
 
         // Smooth scrolling for anchor links
@@ -2086,14 +2017,6 @@
         // Call optimization on load and resize
         window.addEventListener('load', optimizeSnowForMobile);
         window.addEventListener('resize', optimizeSnowForMobile);
-        
-        // Prevent horizontal scrolling on mobile
-        document.addEventListener('touchmove', function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                return;
-            }
-            e.preventDefault();
-        }, { passive: false });
     </script>
 </body>
 </html>
