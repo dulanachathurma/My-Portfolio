@@ -1115,6 +1115,35 @@
                 width: 45px;
                 height: 45px;
             }
+
+            /* Mobile-specific improvements */
+            .hero {
+                padding-top: 150px;
+                min-height: 90vh;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .tags {
+                padding: 0 10px;
+            }
+            
+            .tag {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1150,6 +1179,74 @@
             
             .theme-toggle i {
                 font-size: 1.2rem;
+            }
+            
+            /* Further mobile optimizations */
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .project-img,
+            .certificate-img,
+            .article-img {
+                margin: -20px -20px 20px;
+            }
+            
+            .education-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .contact-label {
+                font-size: 0.6rem;
+                bottom: -25px;
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .contact-icons {
+                gap: 0.8rem;
+            }
+            
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1212,6 +1309,8 @@
                     <div class="tag">Mobile Apps</div>
                     <div class="tag">Software Engineering</div>
                     <div class="tag">Problem Solving</div>
+                    <div class="tag">Full-Stack</div>
+                    <div class="tag">Spring Boot</div>
                 </div>
             </div>
         </div>
@@ -1227,7 +1326,8 @@
                 </div>
                 <div class="about-text">
                     <p>Hi! I'm Dulana Chathurma, a passionate Software Engineering (UG) student at University of Kelaniya. I love coding, problem-solving, and building impactful projects. Always eager to learn new technologies and improve my skills.</p>
-                    <p>My journey in software engineering began with a curiosity about how technology can solve real-world problems. Since then, I've been dedicated to expanding my knowledge in AI, machine learning, and mobile app development.</p>
+                    <p>My journey in software engineering began with a curiosity about how technology can solve real-world problems. Since then, I've been dedicated to expanding my knowledge in AI, machine learning, mobile app development, and full-stack web development.</p>
+                    <p>My recent User Management Application project showcases my ability to build complete full-stack solutions using Spring Boot and React.js.</p>
                 </div>
             </div>
         </div>
@@ -1381,6 +1481,18 @@
                     </div>
                     <h4>MySQL</h4>
                 </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-spring-boot.png" alt="Spring Boot">
+                    </div>
+                    <h4>Spring Boot</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-react.png" alt="React.js">
+                    </div>
+                    <h4>React.js</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -1390,6 +1502,82 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
+                <!-- User Management Application -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-user-management.jpg" alt="User Management Application">
+                    </div>
+                    <h3>User Management Application</h3>
+                    <p><i class="far fa-calendar-alt"></i> Sep 2025 – Oct 2025</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Associated with University of Kelaniya Sri Lanka</p>
+                    <p>Full-stack CRUD web application developed using Spring Boot, React.js, JavaScript, and MySQL.</p>
+                    <div class="project-tools">
+                        <div class="tool">Java</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Spring Boot</div>
+                        <div class="tool">React.js</div>
+                        <div class="tool">MySQL</div>
+                        <div class="tool">Full-Stack</div>
+                    </div>
+                    <p>The system allows efficient user data management with a structured backend and a responsive front-end interface, demonstrating practical full-stack development skills.</p>
+                    <a href="https://github.com/dulanachathurma/User-Management-Application" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+
+                <!-- Sriseta Official Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-astrology-website.jpg" alt="Sriseta Official Website">
+                    </div>
+                    <h3>Sriseta Official Website</h3>
+                    <p><i class="far fa-calendar-alt"></i> Dec 2025 – Present</p>
+                    <p>Modern astrology website with live horoscopes, service booking, WhatsApp integration, and mobile-friendly design.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                    </div>
+                    <p>Features auto-updating predictions, interactive zodiac slider, and contact forms. No backend needed - runs completely in browser.</p>
+                    <a href="https://dulanachathurma.github.io/Astrology-Services-App/" class="btn btn-primary btn-small">View Website</a>
+                </div>
+
+                <!-- TravelScope Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-travelscope.jpg" alt="TravelScope Website">
+                    </div>
+                    <h3>TravelScope Website</h3>
+                    <p>A comprehensive travel platform showcasing Sri Lanka's beauty, built with modern web technologies.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Google Maps API</div>
+                    </div>
+                    <p>This project represents my passion for both technology and promoting Sri Lankan tourism. It's more than just a web app - it's a digital journey through our beautiful country!</p>
+                    <a href="https://dulanachathurma.github.io/TravelScope/#home" class="btn btn-primary btn-small">View Website</a>
+                </div>
+
+                <!-- WeatherSphere Pro App -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-weather-app.jpg" alt="WeatherSphere Pro App">
+                    </div>
+                    <h3>WeatherSphere Pro App</h3>
+                    <p><i class="far fa-calendar-alt"></i> Dec 2025 – Present</p>
+                    <p>WeatherSphere Pro is a responsive weather web application providing real-time weather updates with a clean interface.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Weather API</div>
+                    </div>
+                    <p>Built using React.js, HTML, CSS, and JavaScript, providing real-time weather updates with a clean and user-friendly interface.</p>
+                    <a href="https://dulanachathurma.github.io/WeatherSphere-Pro/" class="btn btn-primary btn-small">View Website</a>
+                </div>
+                
                 <!-- Todo App Project -->
                 <div class="project-card card">
                     <div class="project-img">
@@ -1416,24 +1604,6 @@
                         <div class="tool">Banking Logic</div>
                     </div>
                     <a href="https://github.com/dulanachathurma/ATM-Bank-Project-System" class="btn btn-primary btn-small">View on GitHub</a>
-                </div>
-                
-                <!-- NEW TravelScope Project -->
-                <div class="project-card card">
-                    <div class="project-img">
-                        <img src="project-travelscope.jpg" alt="TravelScope Website">
-                    </div>
-                    <h3>TravelScope Website</h3>
-                    <p>A comprehensive travel platform showcasing Sri Lanka's beauty, built with modern web technologies.</p>
-                    <div class="project-tools">
-                        <div class="tool">React.js</div>
-                        <div class="tool">HTML5</div>
-                        <div class="tool">CSS3</div>
-                        <div class="tool">JavaScript</div>
-                        <div class="tool">Google Maps API</div>
-                    </div>
-                    <p>This project represents my passion for both technology and promoting Sri Lankan tourism. It's more than just a web app - it's a digital journey through our beautiful country!</p>
-                    <a href="https://dulanachathurma.github.io/TravelScope/" class="btn btn-primary btn-small">View Website</a>
                 </div>
             </div>
         </div>
@@ -1783,7 +1953,7 @@
             }
         });
 
-        // Scroll animations
+        // Scroll animations - Optimized for performance
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1792,19 +1962,61 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    requestAnimationFrame(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    });
                 }
             });
         }, observerOptions);
 
-        // Observe elements for animation
-        document.querySelectorAll('.card, h2, .skill-card, .project-card, .certificate-card, .article-card, .contact-icon, .education-card, .experience-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        // Observe elements for animation - optimized batch
+        setTimeout(() => {
+            document.querySelectorAll('.card, h2, .skill-card, .project-card, .certificate-card, .article-card, .contact-icon, .education-card, .experience-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }, 100);
+
+        // Performance optimization: lazy loading for images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        }
+
+        // Optimize snow animation for mobile
+        function optimizeSnowForMobile() {
+            const snowContainer = document.getElementById('snowContainer');
+            if (window.innerWidth <= 768) {
+                // Reduce snowflakes on mobile
+                const snowflakes = document.querySelectorAll('.snowflake');
+                const mobileSnowCount = Math.min(snowflakes.length, 80);
+                
+                // Remove excess snowflakes
+                for (let i = mobileSnowCount; i < snowflakes.length; i++) {
+                    if (snowflakes[i]) {
+                        snowContainer.removeChild(snowflakes[i]);
+                    }
+                }
+                
+                // Adjust animation for mobile
+                const remainingSnowflakes = document.querySelectorAll('.snowflake');
+                remainingSnowflakes.forEach(snowflake => {
+                    const currentDuration = parseFloat(snowflake.style.animationDuration);
+                    if (currentDuration > 10) {
+                        snowflake.style.animationDuration = `${currentDuration * 0.7}s`;
+                    }
+                });
+            }
+        }
+
+        // Call optimization on load and resize
+        window.addEventListener('load', optimizeSnowForMobile);
+        window.addEventListener('resize', optimizeSnowForMobile);
     </script>
 </body>
 </html>
