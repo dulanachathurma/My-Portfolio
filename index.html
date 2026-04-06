@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dulana Chathurma | AI/ML Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* RESET & BASE — natural feel, no shadows */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CSS Variables */
         :root {
             --primary: #6366f1;
             --primary-light: #818cf8;
@@ -26,28 +20,42 @@
             --light: #f8fafc;
             --gray: #94a3b8;
             --gray-light: #e2e8f0;
-            --border-radius: 20px;
-            --transition: all 0.3s ease;
+            --professional-gray: #f8fafc;
+            --professional-gray-dark: #e2e8f0;
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             
-            /* Light mode */
+            /* Light mode colors */
             --bg-color: #f8fafc;
             --text-color: #1e293b;
             --card-bg: white;
-            --header-bg: rgba(255, 255, 255, 0.96);
-            --border-subtle: #eef2f6;
+            --header-bg: rgba(255, 255, 255, 0.95);
         }
 
+        /* Dark mode variables */
         .dark-mode {
             --bg-color: #0f172a;
             --text-color: #f1f5f9;
             --card-bg: #1e293b;
-            --header-bg: rgba(30, 41, 59, 0.96);
-            --border-subtle: #334155;
+            --header-bg: rgba(30, 41, 59, 0.95);
             --dark: #f1f5f9;
             --dark-light: #cbd5e1;
             --light: #0f172a;
-            --gray: #94a3b8;
+            --gray: #64748b;
             --gray-light: #334155;
+            --professional-gray: #1e293b;
+            --professional-gray-dark: #0f172a;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -56,7 +64,7 @@
             color: var(--text-color);
             background-color: var(--bg-color);
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.2s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -67,7 +75,7 @@
         }
 
         section {
-            padding: 90px 0;
+            padding: 100px 0;
             position: relative;
         }
 
@@ -98,11 +106,11 @@
             width: 80px;
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
+            border-radius: 2px;
         }
 
         p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             color: var(--dark-light);
         }
 
@@ -117,17 +125,33 @@
             object-fit: cover;
         }
 
-        /* BUTTONS */
         .btn {
             display: inline-block;
-            padding: 10px 24px;
-            border-radius: 40px;
+            padding: 12px 28px;
+            border-radius: 50px;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
-            font-family: inherit;
-            font-size: 0.95rem;
             border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
@@ -136,138 +160,83 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            opacity: 0.92;
+            transform: translateY(-3px);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: var(--primary);
-            border: 1.5px solid var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .btn-secondary:hover {
             background-color: var(--primary);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .btn-small {
-            padding: 6px 16px;
-            font-size: 0.8rem;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
 
-        /* CARDS — no shadow */
         .card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 28px 20px;
+            padding: 24px;
             transition: var(--transition);
-            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-light);
-        }
-
-        /* HEADER - logo left, nav center, theme toggle right */
-        header {
-            position: fixed;
+        .card::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--header-bg);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-subtle);
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            position: relative;
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
-        /* Logo area - left side */
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        .logo img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* Navigation links - centered */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .nav-links li a {
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-
-        /* Dark/Light Mode Toggle - positioned at right side of header bar */
+        /* Dark Mode Toggle - Positioned in top bar */
         .theme-toggle {
+            position: fixed;
+            top: 18px;
+            right: 80px;
+            z-index: 1002;
             background: var(--card-bg);
             border-radius: 50%;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid var(--border-subtle);
-            flex-shrink: 0;
-            margin-left: auto;
-        }
-
-        .theme-toggle i {
-            font-size: 1.3rem;
-            color: var(--primary);
         }
 
         .theme-toggle:hover {
-            transform: scale(1.05);
-            background: var(--primary);
-        }
-        .theme-toggle:hover i {
-            color: white;
+            transform: scale(1.1);
         }
 
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.6rem;
-            color: var(--text-color);
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--primary);
         }
 
-        /* Snow animation */
+        /* Snow Animation */
         .snow-container {
             position: fixed;
             top: 0;
@@ -281,30 +250,161 @@
 
         .snowflake {
             position: absolute;
-            background: rgba(255, 255, 255, 0.7);
+            background: white;
             border-radius: 50%;
-            opacity: 0.6;
+            opacity: 0.8;
             animation: snow-fall linear infinite;
         }
 
         @keyframes snow-fall {
             0% {
-                transform: translateY(-10px) translateX(0);
+                transform: translateY(-10px) translateX(0) rotate(0deg);
                 opacity: 0;
             }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
             100% {
-                transform: translateY(100vh) translateX(15px);
+                transform: translateY(100vh) translateX(20px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* HERO */
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            z-index: 1003;
+        }
+
+        /* Mobile Navigation Menu */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background: var(--card-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+                transition: left 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0.8rem 0;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 8px 0;
+            }
+            
+            /* Adjust theme toggle for mobile */
+            .theme-toggle {
+                top: 15px;
+                right: 70px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .theme-toggle i {
+                font-size: 1rem;
+            }
+        }
+
+        /* Hero Section */
         .hero {
-            padding-top: 150px;
+            padding-top: 180px;
             text-align: center;
             position: relative;
+            overflow: hidden;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -316,7 +416,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -329,28 +429,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            border: 4px solid white;
+            margin: 0 auto 2rem;
+            border: 6px solid var(--card-bg);
             overflow: hidden;
-            background: #e2e8f0;
+            background-color: var(--gray-light);
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
 
@@ -361,28 +462,56 @@
         }
 
         .hero h1 {
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
             color: white;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        .hero p, .typed-text {
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
             color: white;
             font-weight: 500;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         .auto-type {
-            min-height: 70px;
-            margin: 0 auto 1.5rem;
-            max-width: 800px;
+            min-height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typed-text {
+            font-weight: 500;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 2px;
+            background-color: white;
+            animation: blink 1s infinite;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            flex-wrap: wrap;
             margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .tags {
@@ -390,91 +519,206 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.92);
-            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 0.85rem;
-            color: #1e293b;
-            font-weight: 500;
-            transition: 0.2s;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            color: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .tag:hover {
+            transform: translateY(-3px);
             background: var(--primary);
             color: white;
-            transform: translateY(-2px);
         }
 
-        /* about layout */
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
         }
-        .about-img img {
-            border-radius: 28px;
-            width: 100%;
-            height: auto;
-            border: 1px solid var(--border-subtle);
-        }
 
-        /* education / experience */
-        .education-img, .experience-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 1.2rem;
+        .about-img {
+            border-radius: var(--border-radius);
             overflow: hidden;
-            border: 2px solid var(--border-subtle);
+            background-color: var(--gray-light);
+            height: 500px;
+            animation: fadeInLeft 1s ease;
         }
 
-        .education-img img, .experience-img img {
+        .about-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .education-details, .experience-details {
+        .about-text {
+            animation: fadeInRight 1s ease;
+        }
+
+        /* Education Section */
+        .education {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .education-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--card-bg);
+            background-color: var(--gray-light);
+        }
+
+        .education-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .education-details {
             text-align: center;
         }
 
-        .education-skills, .certificate-skills {
+        .education-details h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .education-skills {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            justify-content: center;
             margin: 1rem 0;
+            justify-content: center;
         }
 
         .skill-tag {
             background: var(--gray-light);
             padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--text-color);
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .experience-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--card-bg);
+            background-color: var(--gray-light);
+        }
+
+        .experience-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .experience-details {
+            text-align: center;
+        }
+
+        .experience-details h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-details p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .experience-description {
+            margin: 1rem 0;
+            color: var(--dark-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             gap: 1.5rem;
         }
 
         .skill-card {
             text-align: center;
-            padding: 1.2rem 0.5rem;
-            border-radius: 24px;
+            padding: 1.5rem 1rem;
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease;
+            background: var(--card-bg);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
         }
 
         .skill-icon {
-            width: 55px;
-            height: 55px;
-            margin: 0 auto 0.8rem;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .skill-icon img {
@@ -483,67 +727,179 @@
             object-fit: contain;
         }
 
-        .projects-grid, .certificates-grid, .articles-grid, .education-grid, .experience-grid {
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
 
-        .project-img, .certificate-img, .article-img {
-            height: 180px;
+        .project-card {
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .project-img {
+            height: 200px;
             background-color: var(--gray-light);
-            border-radius: 20px;
-            margin-bottom: 1rem;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin: -24px -24px 20px;
             overflow: hidden;
         }
 
-        .project-img img, .certificate-img img, .article-img img {
+        .project-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
-        .project-card:hover .project-img img,
-        .certificate-card:hover .certificate-img img,
-        .article-card:hover .article-img img {
-            transform: scale(1.02);
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
         }
 
         .project-tools {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin: 12px 0;
+            margin: 1rem 0;
         }
 
         .tool {
             background: var(--gray-light);
             padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* Certificates Section */
+        .certificates {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .certificate-img {
+            height: 220px;
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-img:hover .certificate-overlay {
+            opacity: 1;
+        }
+
+        .certificate-description {
+            margin: 1rem 0;
+            color: var(--dark-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .certificate-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 1rem 0;
         }
 
         .cert-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             margin-top: 1rem;
+        }
+
+        /* Articles Section */
+        .articles {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .article-img {
+            height: 180px;
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-img img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--professional-gray) 0%, var(--professional-gray-dark) 100%);
+            backdrop-filter: blur(5px);
         }
 
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .contact-map {
-            border-radius: 24px;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            height: 380px;
-            border: 1px solid var(--border-subtle);
+            height: 400px;
+            animation: fadeInLeft 1s ease;
         }
 
         .contact-map iframe {
@@ -553,54 +909,73 @@
         }
 
         .contact-details {
+            animation: fadeInRight 1s ease;
             text-align: center;
         }
 
         .contact-info {
-            margin: 1.8rem 0;
-            text-align: left;
-            display: inline-block;
+            margin-top: 2rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: flex-start;
         }
 
         .contact-item i {
             color: var(--primary);
-            width: 28px;
+            font-size: 1.2rem;
+            width: 30px;
         }
 
         .contact-icons {
             display: flex;
             justify-content: center;
-            gap: 1.6rem;
-            flex-wrap: wrap;
+            gap: 2rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .contact-icon {
-            width: 58px;
-            height: 58px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: var(--card-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--primary);
-            transition: 0.25s;
-            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease;
             position: relative;
         }
 
+        .contact-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-icon:hover::before {
+            opacity: 1;
+        }
+
         .contact-icon:hover {
-            transform: translateY(-6px);
-            background: var(--primary);
-            color: white;
+            transform: translateY(-8px) scale(1.1);
+            background: var(--card-bg);
+            color: var(--primary);
         }
 
         .contact-label {
@@ -610,128 +985,279 @@
             transform: translateX(-50%);
             background: var(--dark);
             color: white;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            white-space: nowrap;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
             opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
         }
 
         .contact-icon:hover .contact-label {
             opacity: 1;
         }
 
+        /* Footer */
         footer {
             background: var(--dark);
             color: white;
             text-align: center;
             padding: 2rem 0;
-            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
 
         .footer-links {
             display: flex;
             gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 0.8rem 0;
+            margin: 1rem 0;
         }
 
-        /* ========== RESPONSIVE: on mobile, center nav and theme toggle adjustment ========== */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                order: 3;
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .copyright {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--card-bg);
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-                padding: 2rem;
-                transform: translateY(-150%);
-                transition: 0.3s ease;
-                z-index: 999;
-                border-bottom: 1px solid var(--border-subtle);
-                backdrop-filter: blur(12px);
-                position: absolute;
-                left: 0;
-                transform: translateX(0) translateY(-150%);
-                margin: 0;
-            }
-            .nav-links.active {
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
-            nav {
-                justify-content: space-between;
-                flex-wrap: wrap;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
             }
-            .logo {
-                order: 1;
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
-            .theme-toggle {
-                order: 2;
-                margin-left: auto;
-                margin-right: 15px;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
             }
-            .hamburger {
-                order: 3;
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-img {
+                justify-self: center;
+                max-width: 400px;
+                height: 400px;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+
+            .contact-icons {
+                gap: 1.5rem;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
             .hero {
-                padding-top: 130px;
+                padding-top: 150px;
+                min-height: 90vh;
             }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .tags {
+                padding: 0 10px;
+            }
+            
+            .tag {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
             h1 {
                 font-size: 2.2rem;
             }
+            
             h2 {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
-            .contact-content {
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .projects-grid,
+            .certificates-grid,
+            .articles-grid {
                 grid-template-columns: 1fr;
             }
-            .about-content {
+            
+            .contact-icons {
+                gap: 1rem;
+            }
+
+            .theme-toggle {
+                top: 15px;
+                right: 60px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .theme-toggle i {
+                font-size: 1rem;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .project-img,
+            .certificate-img,
+            .article-img {
+                margin: -20px -20px 20px;
+            }
+            
+            .education-grid,
+            .experience-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
             }
-            .about-img {
-                max-width: 300px;
-                margin: 0 auto;
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 1rem;
             }
-            .profile-img {
-                width: 130px;
-                height: 130px;
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
-            .btn-group .btn {
-                min-width: 150px;
+            
+            .contact-label {
+                font-size: 0.6rem;
+                bottom: -25px;
             }
         }
 
-        @media (max-width: 480px) {
-            .theme-toggle {
-                width: 38px;
-                height: 38px;
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
             }
-            .theme-toggle i {
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .contact-icons {
+                gap: 0.8rem;
+            }
+            
+            .contact-icon {
+                width: 45px;
+                height: 45px;
                 font-size: 1.1rem;
-            }
-            section {
-                padding: 65px 0;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Dark Mode Toggle - Positioned at top right of home page -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Snow Animation Container -->
     <div class="snow-container" id="snowContainer"></div>
 
+    <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
@@ -740,20 +1266,16 @@
                     DC
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certificates">Certificates</a></li>
-                    <li><a href="#articles">Articles</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" target="_blank">Home</a></li>
+                    <li><a href="#about" target="_blank">About</a></li>
+                    <li><a href="#education" target="_blank">Education</a></li>
+                    <li><a href="#experience" target="_blank">Experience</a></li>
+                    <li><a href="#skills" target="_blank">Skills</a></li>
+                    <li><a href="#projects" target="_blank">Projects</a></li>
+                    <li><a href="#certificates" target="_blank">Certificates</a></li>
+                    <li><a href="#articles" target="_blank">Articles</a></li>
+                    <li><a href="#contact" target="_blank">Contact</a></li>
                 </ul>
-                <!-- Dark Mode Toggle inside header bar at right side -->
-                <div class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </div>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -761,6 +1283,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
         <div class="container">
@@ -770,106 +1293,876 @@
                 </div>
                 <h1>I'm Dulana Chathurma</h1>
                 <div class="auto-type">
-                    <p class="typed-text"></p><span class="cursor"></span>
+                    <p class="typed-text"></p>
+                    <span class="cursor"></span>
                 </div>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">Hire Me</a>
                     <a href="Dulana-Chathurma-CV.pdf" class="btn btn-secondary" download>Download CV</a>
                 </div>
                 <div class="tags">
-                    <div class="tag">AI</div><div class="tag">ML</div><div class="tag">Mobile Apps</div>
-                    <div class="tag">Software Engineering</div><div class="tag">Full-Stack</div>
+                    <div class="tag">AI</div>
+                    <div class="tag">ML</div>
+                    <div class="tag">Mobile Apps</div>
+                    <div class="tag">Software Engineering</div>
+                    <div class="tag">Problem Solving</div>
+                    <div class="tag">Full-Stack</div>
                     <div class="tag">Spring Boot</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about"><div class="container"><h2>About Me</h2><div class="about-content"><div class="about-img"><img src="dulana-profile-about1.jpg" alt="Dulana"></div><div class="about-text"><p>Hi! I'm Dulana Chathurma, a passionate Software Engineering (UG) student at University of Kelaniya. I love coding, problem-solving, and building impactful projects. Always eager to learn new technologies.</p><p>My journey in software engineering began with curiosity about solving real-world problems. I'm dedicated to AI, machine learning, mobile apps, and full-stack development.</p><p>My User Management Application showcases full-stack skills with Spring Boot and React.js.</p></div></div></div></section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="dulana-profile-about1.jpg" alt="Dulana Chathurma">
+                </div>
+                <div class="about-text">
+                    <p>Hi! I'm Dulana Chathurma, a passionate Software Engineering (UG) student at University of Kelaniya. I love coding, problem-solving, and building impactful projects. Always eager to learn new technologies and improve my skills.</p>
+                    <p>My journey in software engineering began with a curiosity about how technology can solve real-world problems. Since then, I've been dedicated to expanding my knowledge in AI, machine learning, mobile app development, and full-stack web development.</p>
+                    <p>My recent User Management Application project showcases my ability to build complete full-stack solutions using Spring Boot and React.js.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="education" class="education"><div class="container"><h2>Education</h2><div class="education-grid"><div class="education-card card"><div class="education-img"><img src="education-software-engineering.jpg" alt="SE"></div><div class="education-details"><h3>BSc (Honours) in Software Engineering</h3><p><i class="fas fa-map-marker-alt"></i> University of Kelaniya, Sri Lanka</p><p><i class="far fa-calendar-alt"></i> Mar 2025 - Apr 2029</p><div class="education-skills"><div class="skill-tag">Mathematics</div><div class="skill-tag">C</div><div class="skill-tag">Python</div><div class="skill-tag">Java</div><div class="skill-tag">MySQL</div><div class="skill-tag">OOP</div><div class="skill-tag">Data Structures</div></div></div></div><div class="education-card card"><div class="education-img"><img src="education-al.jpg" alt="AL"></div><div class="education-details"><h3>G.C.E Advanced Level Examination 2023(2024)</h3><p><i class="fas fa-map-marker-alt"></i> H/ Rajapaksa National College</p><p><i class="far fa-calendar-alt"></i> 2023 (2024)</p><div class="education-skills"><div class="skill-tag">Combined Maths: A</div><div class="skill-tag">Physics: B</div><div class="skill-tag">Chemistry: B</div></div></div></div></div></div></section>
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <!-- University Education -->
+                <div class="education-card card">
+                    <div class="education-img">
+                        <img src="education-software-engineering.jpg" alt="Software Engineering">
+                    </div>
+                    <div class="education-details">
+                        <h3>BSc (Honours) in Software Engineering</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> Mar 2025 - Apr 2029</p>
+                        <div class="education-skills">
+                            <div class="skill-tag">Mathematics for Computing</div>
+                            <div class="skill-tag">Communication Skills with English</div>
+                            <div class="skill-tag">C language</div>
+                            <div class="skill-tag">Database and development</div>
+                            <div class="skill-tag">PHP Frameworks</div>
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">CSS</div>
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">PHP</div>
+                            <div class="skill-tag">Java</div>
+                            <div class="skill-tag">PMAT</div>
+                            <div class="skill-tag">Data structures and algorithm</div>
+                            <div class="skill-tag">MySQL</div>
+                            <div class="skill-tag">Statistical Data Analysis</div>
+                            <div class="skill-tag">HTML</div>
+                            <div class="skill-tag">OOP</div>
+                        </div>
+                    </div>
+                </div>
 
-    <section id="experience" class="experience"><div class="container"><h2>Experience</h2><div class="experience-grid"><div class="experience-card card"><div class="experience-img"><img src="experience-gavel-club.jpg" alt="Gavel"></div><div class="experience-details"><h3>Gavel Club - University of Kelaniya</h3><p><i class="fas fa-map-marker-alt"></i> Kelaniya, Sri Lanka</p><p><i class="far fa-calendar-alt"></i> 2023 - Present</p><div class="experience-description">Faculty Coordinator for social services, organizing events.</div><a href="https://www.linkedin.com/in/dulana-chathurma/overlay/1759575211729/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" target="_blank" rel="noopener" class="btn btn-secondary btn-small">View Photo</a></div></div><div class="experience-card card"><div class="experience-img"><img src="experience-environmental-authority.jpg" alt="Env"></div><div class="experience-details"><h3>Central Environmental Authority, Sri Lanka</h3><p><i class="fas fa-map-marker-alt"></i> Beliatta, Sri Lanka</p><p><i class="far fa-calendar-alt"></i> 2020 - 2022</p><div class="experience-description">School Environmental Pioneer Service Group, achieved 3 ranking logos.</div><a href="https://www.linkedin.com/in/dulana-chathurma/overlay/volunteering-experiences/551584802/multiple-media-viewer?profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&treasuryMediaId=1759629930845&type=IMAGE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" target="_blank" rel="noopener" class="btn btn-secondary btn-small">View Photo</a></div></div></div></div></section>
+                <!-- A/L Education -->
+                <div class="education-card card">
+                    <div class="education-img">
+                        <img src="education-al.jpg" alt="G.C.E Advanced Level">
+                    </div>
+                    <div class="education-details">
+                        <h3>G.C.E Advanced Level Examination 2023(2024)</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> H/ Rajapaksa National College, Weeraketiya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2023 (2024)</p>
+                        <div class="education-skills">
+                            <div class="skill-tag">Combined Mathematics: A</div>
+                            <div class="skill-tag">Physics: B</div>
+                            <div class="skill-tag">Chemistry: B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="skills" class="skills"><div class="container"><h2>Skills</h2><div class="skills-grid"><div class="skill-card card"><div class="skill-icon"><img src="icon-java.png" alt="Java"></div><h4>Java</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-python.png" alt="Python"></div><h4>Python</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-c-language.png" alt="C"></div><h4>C</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-javascript.png" alt="JS"></div><h4>JavaScript</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-html-css.png" alt="HTML"></div><h4>HTML</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-html-css1.png" alt="CSS"></div><h4>CSS</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-ai-ml.png" alt="AI"></div><h4>AI / ML</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-mysql.png" alt="MySQL"></div><h4>MySQL</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-spring-boot.png" alt="Spring Boot"></div><h4>Spring Boot</h4></div><div class="skill-card card"><div class="skill-icon"><img src="icon-react.png" alt="React"></div><h4>React.js</h4></div></div></div></section>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <!-- Experience 1 -->
+                <div class="experience-card card">
+                    <div class="experience-img">
+                        <img src="experience-gavel-club.jpg" alt="Gavel Club">
+                    </div>
+                    <div class="experience-details">
+                        <h3>Gavel Club - University of Kelaniya</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Kelaniya, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2023 - Present</p>
+                        <div class="experience-description">
+                            <p>Faculty Coordinator for social services, organizing events and activities that benefit the community.</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/overlay/1759575211729/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" class="btn btn-secondary btn-small">View Photo</a>
+                    </div>
+                </div>
 
-    <section id="projects" class="projects"><div class="container"><h2>Featured Projects</h2><div class="projects-grid"><div class="project-card card"><div class="project-img"><img src="project-medical-center.jpg" alt="CarePoint"></div><h3>CarePoint Medical Center</h3><p>Modern healthcare web app with appointment booking.</p><div class="project-tools"><div class="tool">HTML5</div><div class="tool">CSS3</div><div class="tool">JS</div></div><a href="https://dulanamedical.netlify.app" target="_blank" class="btn btn-primary btn-small">View Website</a></div><div class="project-card card"><div class="project-img"><img src="project-amazon-clone.jpg" alt="Amazon"></div><h3>Amazon Clone Website</h3><p>E-commerce frontend with cart.</p><div class="project-tools"><div class="tool">HTML/CSS/JS</div></div><a href="https://github.com/dulanachathurma/Amazon-Clone" target="_blank" class="btn btn-primary btn-small">GitHub</a></div><div class="project-card card"><div class="project-img"><img src="project-user-management.jpg" alt="UserMgmt"></div><h3>User Management App</h3><p>Spring Boot + React + MySQL full-stack CRUD.</p><div class="project-tools"><div class="tool">Java</div><div class="tool">Spring Boot</div><div class="tool">React</div></div><a href="https://github.com/dulanachathurma/User-Management-Application" target="_blank" class="btn btn-primary btn-small">GitHub</a></div><div class="project-card card"><div class="project-img"><img src="project-astrology-website.jpg" alt="Astrology"></div><h3>Sriseta Official Website</h3><p>Astrology platform with live horoscopes.</p><div class="project-tools"><div class="tool">React</div><div class="tool">CSS</div></div><a href="https://dulanachathurma.github.io/Astrology-Services-App/" target="_blank" class="btn btn-primary btn-small">Live Demo</a></div><div class="project-card card"><div class="project-img"><img src="project-travelscope.jpg" alt="TravelScope"></div><h3>TravelScope Website</h3><p>Sri Lanka travel platform.</p><div class="project-tools"><div class="tool">React</div><div class="tool">Google Maps API</div></div><a href="https://dulanachathurma.github.io/TravelScope/#home" target="_blank" class="btn btn-primary btn-small">View</a></div><div class="project-card card"><div class="project-img"><img src="project-weather-app.jpg" alt="Weather"></div><h3>WeatherSphere Pro</h3><p>Real-time weather web app.</p><div class="project-tools"><div class="tool">React</div><div class="tool">Weather API</div></div><a href="https://dulanachathurma.github.io/WeatherSphere-Pro/" target="_blank" class="btn btn-primary btn-small">Demo</a></div><div class="project-card card"><div class="project-img"><img src="project-ai-career.jpg" alt="AI Career"></div><h3>AI Career & University Recommendation</h3><p>ML based recommendation system.</p><div class="project-tools"><div class="tool">Python</div><div class="tool">Flask</div><div class="tool">ML</div></div><a href="https://medium.com/@dulanachathurma99/ai-career-university-recommendation-system-2cfafe7d9842" target="_blank" class="btn btn-primary btn-small">Read</a></div><div class="project-card card"><div class="project-img"><img src="project-youtube-clone.jpg" alt="YouTube"></div><h3>YouTube Frontend Clone</h3><p>HTML/CSS UI replica.</p><div class="project-tools"><div class="tool">HTML5</div><div class="tool">CSS3</div></div><a href="https://dulanachathurma.github.io/YouTube-Interface/" target="_blank" class="btn btn-primary btn-small">Live Demo</a></div><div class="project-card card"><div class="project-img"><img src="project-nexgenai.jpg" alt="NexGenAI"></div><h3>Intelligent Career Skill Analysis</h3><p>AI resume analysis & ATS score.</p><div class="project-tools"><div class="tool">React</div><div class="tool">TailwindCSS</div></div><a href="https://dulanachathurma.github.io/Intelligent-Career-Skill-Analysis-Platform/" target="_blank" class="btn btn-primary btn-small">View Project</a></div></div></div></section>
+                <!-- Experience 2 -->
+                <div class="experience-card card">
+                    <div class="experience-img">
+                        <img src="experience-environmental-authority.jpg" alt="Environmental Authority">
+                    </div>
+                    <div class="experience-details">
+                        <h3>Central Environmental Authority, Sri Lanka</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Beliatta, Sri Lanka</p>
+                        <p><i class="far fa-calendar-alt"></i> 2020 - 2022</p>
+                        <div class="experience-description">
+                            <p>School Environmental Pioneer Service Group member at H/Beliatta National College Environmental Pioneer Team. Achieved 3 ranking logos for outstanding contributions.</p>
+                        </div>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/overlay/volunteering-experiences/551584802/multiple-media-viewer?profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&treasuryMediaId=1759629930845&type=IMAGE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOAcPX701QzaV7kzBuppvLA%3D%3D" class="btn btn-secondary btn-small">View Photo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="certificates" class="certificates"><div class="container"><h2>Certificates</h2><div class="certificates-grid"><div class="certificate-card card"><div class="certificate-img"><img src="certificate-online-courses.jpg" alt="online"></div><h3>Online Certification Course</h3><div class="cert-links"><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760078706159/" target="_blank" class="btn btn-secondary btn-small">Python</a><a href="https://open.uom.lk/lms/mod/customcert/view.php?id=838&downloadown=1" target="_blank" class="btn btn-secondary btn-small">Advanced Python</a></div></div><div class="certificate-card card"><div class="certificate-img"><img src="certificate-english-diploma.jpg" alt="English"></div><h3>Diploma in English (CERF B1)</h3><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1759555692945/" target="_blank" class="btn btn-secondary btn-small">View</a></div><div class="certificate-card card"><div class="certificate-img"><img src="certificate-udemy-courses.jpg" alt="Udemy"></div><h3>Udemy Certifications (AI/ML, Full Stack)</h3><div class="cert-links"><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760150187955/" target="_blank" class="btn btn-secondary btn-small">GenAI</a><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760112578435/" target="_blank" class="btn btn-secondary btn-small">ML</a></div></div><div class="certificate-card card"><div class="certificate-img"><img src="certificate-microsoft.jpg" alt="MS"></div><h3>Microsoft Certificates</h3><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/" target="_blank" class="btn btn-secondary btn-small">LinkedIn</a></div><div class="certificate-card card"><div class="certificate-img"><img src="certificate-aws.jpg" alt="AWS"></div><h3>AWS Certificates</h3><a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/" target="_blank" class="btn btn-secondary btn-small">View on LinkedIn</a></div></div></div></section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-java.png" alt="Java">
+                    </div>
+                    <h4>Java</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-python.png" alt="Python">
+                    </div>
+                    <h4>Python</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-c-language.png" alt="C">
+                    </div>
+                    <h4>C</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-javascript.png" alt="JavaScript">
+                    </div>
+                    <h4>JavaScript</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-html-css.png" alt="HTML">
+                    </div>
+                    <h4>HTML</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-html-css1.png" alt="CSS">
+                    </div>
+                    <h4>CSS</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-ai-ml.png" alt="AI/ML">
+                    </div>
+                    <h4>AI / ML</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-mysql.png" alt="MySQL">
+                    </div>
+                    <h4>MySQL</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-spring-boot.png" alt="Spring Boot">
+                    </div>
+                    <h4>Spring Boot</h4>
+                </div>
+                <div class="skill-card card">
+                    <div class="skill-icon">
+                        <img src="icon-react.png" alt="React.js">
+                    </div>
+                    <h4>React.js</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="articles" class="articles"><div class="container"><h2>My Web Articles</h2><div class="articles-grid"><div class="article-card card"><div class="article-img"><img src="article-cia-triad.jpg" alt="CIA"></div><h3>CIA Triad: Safeguarding Our Information</h3><a href="https://medium.com/@dulanachathurma99/cia-triad-safeguarding-our-inforation-576563e3dbd3" target="_blank" class="btn btn-primary btn-small">Read on Medium</a></div><div class="article-card card"><div class="article-img"><img src="article-diagrams.jpg" alt="Diagrams"></div><h3>The Importance of Diagrams</h3><a href="https://medium.com/@dulanachathurma99/the-importance-of-diagrams-868b1fb153ee" target="_blank" class="btn btn-primary btn-small">Read</a></div><div class="article-card card"><div class="article-img"><img src="article-banking-use-case.jpg" alt="Banking"></div><h3>Banking System Use Case Diagram</h3><a href="https://medium.com/@dulanachathurma99/understanding-the-importance-of-a-banking-system-use-case-diagram-ffe6a938a53f" target="_blank" class="btn btn-primary btn-small">Read</a></div><div class="article-card card"><div class="article-img"><img src="article-elephant-warning-system.jpg" alt="Elephant"></div><h3>Elephant Early Warning System in Railway</h3><a href="https://medium.com/@dulanachathurma99/elephant-early-warning-system-in-railway-transport-5b7149200a8c" target="_blank" class="btn btn-primary btn-small">Read</a></div></div></div></section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- CarePoint Medical Center Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-medical-center.jpg" alt="CarePoint Medical Center">
+                    </div>
+                    <h3>CarePoint Medical Center</h3>
+                    <p><i class="far fa-calendar-alt"></i> 2026</p>
+                    <p>Modern healthcare web application designed for easy doctor search, appointment booking, and seamless patient experience.</p>
+                    
+                    <div class="project-tools">
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                    </div>
 
-    <section id="contact" class="contact"><div class="container"><h2>Contact Me</h2><div class="contact-content"><div class="contact-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.207289909686!2d80.75844177499636!3d6.049260593952773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae142b6c8b5b5a5%3A0x8a0b8c8c8c8c8c8c!2sKopiwatta%2C%20Getamanna%2C%20Beliatta!5e0!3m2!1sen!2slk!4v1690000000000!5m2!1sen!2slk" allowfullscreen loading="lazy"></iframe></div><div class="contact-details"><h3>Get In Touch</h3><div class="contact-info"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Kopiwatta, Getamanna, Beliatta, Sri Lanka</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>+94 76 75 74 844</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>dulanachathurma99@gmail.com</span></div></div><div class="contact-icons"><a href="mailto:dulanachathurma99@gmail.com" target="_blank" class="contact-icon"><i class="fas fa-envelope"></i><span class="contact-label">Email</span></a><a href="https://linkedin.com/in/dulana-chathurma" target="_blank" class="contact-icon"><i class="fab fa-linkedin-in"></i><span class="contact-label">LinkedIn</span></a><a href="https://github.com/dulanachathurma" target="_blank" class="contact-icon"><i class="fab fa-github"></i><span class="contact-label">GitHub</span></a><a href="https://medium.com/@dulanachathurma99" target="_blank" class="contact-icon"><i class="fab fa-medium-m"></i><span class="contact-label">Medium</span></a><a href="https://wa.me/94767574844" target="_blank" class="contact-icon"><i class="fab fa-whatsapp"></i><span class="contact-label">WhatsApp</span></a></div></div></div></div></section>
+                    <p>Features doctor search, online appointment booking, secure payment simulation, ambulance contact access, and a fully responsive user interface.</p>
 
-    <footer><div class="container"><div class="footer-content"><div class="logo">DC</div><p class="copyright">© 2025 Dulana Chathurma. All rights reserved.</p><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div></div></div></footer>
+                    <a href="https://dulanamedical.netlify.app" class="btn btn-primary btn-small">View Website</a>
+                </div>
+                <!-- Amazon Clone Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-amazon-clone.jpg" alt="Amazon Clone Website">
+                    </div>
+                    <h3>Amazon Clone Website</h3>
+                    <p><i class="far fa-calendar-alt"></i> 2026</p>
+                    <p>A simple e-commerce web application inspired by Amazon, designed to simulate an online shopping experience with a clean and interactive interface.</p>
+                    
+                    <div class="project-tools">
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                    </div>
+
+                    <p>Features product browsing, add-to-cart functionality, responsive layout, and interactive UI elements. Fully frontend-based with no backend integration.</p>
+
+                    <a href="https://github.com/dulanachathurma/Amazon-Clone" class="btn btn-primary btn-small">View Project</a>
+                </div>
+                <!-- User Management Application -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-user-management.jpg" alt="User Management Application">
+                    </div>
+                    <h3>User Management Application</h3>
+                    <p><i class="far fa-calendar-alt"></i> Sep 2025 – Oct 2025</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Associated with University of Kelaniya Sri Lanka</p>
+                    <p>Full-stack CRUD web application developed using Spring Boot, React.js, JavaScript, and MySQL.</p>
+                    <div class="project-tools">
+                        <div class="tool">Java</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Spring Boot</div>
+                        <div class="tool">React.js</div>
+                        <div class="tool">MySQL</div>
+                        <div class="tool">Full-Stack</div>
+                    </div>
+                    <p>The system allows efficient user data management with a structured backend and a responsive front-end interface, demonstrating practical full-stack development skills.</p>
+                    <a href="https://github.com/dulanachathurma/User-Management-Application" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+
+                <!-- Sriseta Official Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-astrology-website.jpg" alt="Sriseta Official Website">
+                    </div>
+                    <h3>Sriseta Official Website</h3>
+                    <p><i class="far fa-calendar-alt"></i> Dec 2025 – Present</p>
+                    <p>Modern astrology website with live horoscopes, service booking, WhatsApp integration, and mobile-friendly design.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                    </div>
+                    <p>Features auto-updating predictions, interactive zodiac slider, and contact forms. No backend needed - runs completely in browser.</p>
+                    <a href="https://dulanachathurma.github.io/Astrology-Services-App/" class="btn btn-primary btn-small">View Website</a>
+                </div>
+
+                <!-- TravelScope Website -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-travelscope.jpg" alt="TravelScope Website">
+                    </div>
+                    <h3>TravelScope Website</h3>
+                    <p>A comprehensive travel platform showcasing Sri Lanka's beauty, built with modern web technologies.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Google Maps API</div>
+                    </div>
+                    <p>This project represents my passion for both technology and promoting Sri Lankan tourism. It's more than just a web app - it's a digital journey through our beautiful country!</p>
+                    <a href="https://dulanachathurma.github.io/TravelScope/#home" class="btn btn-primary btn-small">View Website</a>
+                </div>
+
+                <!-- WeatherSphere Pro App -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-weather-app.jpg" alt="WeatherSphere Pro App">
+                    </div>
+                    <h3>WeatherSphere Pro App</h3>
+                    <p><i class="far fa-calendar-alt"></i> Dec 2025 – Present</p>
+                    <p>WeatherSphere Pro is a responsive weather web application providing real-time weather updates with a clean interface.</p>
+                    <div class="project-tools">
+                        <div class="tool">React.js</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">JavaScript</div>
+                        <div class="tool">Weather API</div>
+                    </div>
+                    <p>Built using React.js, HTML, CSS, and JavaScript, providing real-time weather updates with a clean and user-friendly interface.</p>
+                    <a href="https://dulanachathurma.github.io/WeatherSphere-Pro/" class="btn btn-primary btn-small">View Website</a>
+                </div>
+                
+                <!-- Todo App Project -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-todo-app.jpg" alt="Todo App">
+                    </div>
+                    <h3>Todo App</h3>
+                    <p>A clean Todo App built using Java and PostgreSQL.</p>
+                    <div class="project-tools">
+                        <div class="tool">Java</div>
+                        <div class="tool">PostgreSQL</div>
+                    </div>
+                    <a href="https://github.com/dulanachathurma/Todo-App" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+                
+                <!-- ATM Mini Project -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-atm-system.jpg" alt="ATM Mini Project">
+                    </div>
+                    <h3>ATM Mini Project</h3>
+                    <p>ATM simulation program using C, functions, switch cases, and complete banking logic.</p>
+                    <div class="project-tools">
+                        <div class="tool">C</div>
+                        <div class="tool">Banking Logic</div>
+                    </div>
+                    <a href="https://github.com/dulanachathurma/ATM-Bank-Project-System" class="btn btn-primary btn-small">View on GitHub</a>
+                </div>
+
+                <!-- AI Career & University Recommendation System -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-ai-career.jpg" alt="AI Career & University Recommendation">
+                    </div>
+                    <h3>AI Career & University Recommendation System</h3>
+                    <p><i class="far fa-calendar-alt"></i> Mar 2026 – Present</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Associated with University of Kelaniya Sri Lanka</p>
+                    <p>Building an AI-Based Career Path Prediction and University Recommendation System that helps students make informed decisions.</p>
+                    <div class="project-tools">
+                        <div class="tool">Python</div>
+                        <div class="tool">Machine Learning</div>
+                        <div class="tool">AI</div>
+                        <div class="tool">Recommendation System</div>
+                        <div class="tool">Flask</div>
+                    </div>
+                    <p>Analyzes academic profiles, interests, and market trends to suggest optimal career paths and matching universities.</p>
+                    <a href="https://medium.com/@dulanachathurma99/ai-career-university-recommendation-system-2cfafe7d9842" class="btn btn-primary btn-small">(View Project)</a>
+                </div>
+
+                <!-- YouTube Frontend UI Clone -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-youtube-clone.jpg" alt="YouTube Frontend UI Clone">
+                    </div>
+                    <h3>YouTube Frontend UI Clone (Live Demo 🚀)</h3>
+                    <p><i class="far fa-calendar-alt"></i> 2025</p>
+                    <p>YouTube‑inspired homepage UI, built entirely with HTML5 & CSS3!</p>
+                    <div class="project-tools">
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">Responsive</div>
+                    </div>
+                    <p>Replicates the look and feel of YouTube's interface with clean, modern styling.</p>
+                    <a href="https://dulanachathurma.github.io/YouTube-Interface/" class="btn btn-primary btn-small">Live Demo</a>
+                </div>
+                
+                <!-- Intelligent-Career-Skill-Analysis-Platform -->
+                <div class="project-card card">
+                    <div class="project-img">
+                        <img src="project-nexgenai.jpg" alt="Intelligent Career Skill Analysis Platform">
+                    </div>
+                    <h3>Intelligent Career Skill Analysis Platform</h3>
+                    <p><i class="far fa-calendar-alt"></i> Feb 2026 – Mar 2026</p>
+                    <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya Sri Lanka</p>
+                    <p>🚀 <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
+                    <div class="project-tools">
+                        <div class="tool">React</div>
+                        <div class="tool">TailwindCSS</div>
+                        <div class="tool">HTML5</div>
+                        <div class="tool">CSS3</div>
+                        <div class="tool">AI Resume Analysis</div>
+                    </div>
+                    <p>Features dynamic skill dashboards (auto-updates) and career match predictions to help users align their profile with market demands.</p>
+                    <a href="https://dulanachathurma.github.io/Intelligent-Career-Skill-Analysis-Platform/" class="btn btn-primary btn-small">(View Project)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="container">
+            <h2>Certificates</h2>
+            <div class="certificates-grid">
+                <!-- Certificate 2 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-online-courses.jpg" alt="Online Certification Course">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">Online Certification</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Moratuwa, Sri Lanka</p>
+                    <p><i class="far fa-calendar-alt"></i> Oct 2025 - Jan 2027</p>
+                    <div class="certificate-description">
+                        Specialized programming courses through Open Learning platform focusing on Python development and software engineering principles.
+                    </div>
+                    <div class="certificate-skills">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">Python Calculator projects</div>
+                        <div class="skill-tag">Software Development Process</div>
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760078706159/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">Python Certificate</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760542828732/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">Web Design</a>
+                        <a href="https://open.uom.lk/lms/mod/customcert/view.php?id=838&downloadown=1" target="_blank" class="btn btn-secondary btn-small">Advanced Python Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-english-diploma.jpg" alt="Diploma in English">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">English Diploma</span>
+                        </div>
+                    </div>
+                    <h3>Diploma in English (CERF Level B1)</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dekma Institute Matara, Sri Lanka</p>
+                    <p><i class="far fa-calendar-alt"></i> Jun 2024 - Dec 2024</p>
+                    <div class="certificate-description">
+                        Comprehensive English language program focusing on communication skills, writing proficiency, and spoken English at CERF B1 level.
+                    </div>
+                    <div class="certificate-skills">
+                        <div class="skill-tag">Communication with English</div>
+                        <div class="skill-tag">Writing English</div>
+                        <div class="skill-tag">Spoken English</div>
+                        <div class="skill-tag">Speaking English</div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1759555692945/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small">View Certificate</a>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-udemy-courses.jpg" alt="Udemy Courses">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">Udemy Courses</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course - Udemy</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Udemy Online Platform</p>
+                    <div class="certificate-description">
+                        Comprehensive collection of Udemy courses covering Generative AI, Machine Learning, Full Stack Development, and programming fundamentals.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760150187955/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BDubgJCizTqu4iim9ZWnxhg%3D%3D" class="btn btn-secondary btn-small">Generative AI</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760115066662/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3BDubgJCizTqu4iim9ZWnxhg%3D%3D" class="btn btn-secondary btn-small">AI Chatbot</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760245029797/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">HTML/CSS/JS</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760112578435/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Machine Learning</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760116627651/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Java</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1760118169750/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Full Stack</a>
+                    </div>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-hackerrank.jpg" alt="HackerRank Certifications">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">HackerRank</span>
+                        </div>
+                    </div>
+                    <h3>Online Certification Course - HackerRank</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> HackerRank Platform</p>
+                    <div class="certificate-description">
+                        Programming challenges and skill assessments demonstrating proficiency in problem-solving and coding abilities.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.hackerrank.com/certificates/iframe/26a32f7f5087" class="btn btn-secondary btn-small">Certificate 1</a>
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1763221677010/single-media-viewer?type=DOCUMENT&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bi5w%2BJS39QcWuGVUToiDiLg%3D%3D" class="btn btn-secondary btn-small">Certificate 2</a>
+                    </div>
+                </div>
+
+                <!-- Microsoft Certificates -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-microsoft.jpg" alt="Microsoft Certificates">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">Microsoft</span>
+                        </div>
+                    </div>
+                    <h3>Microsoft Certificates</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Microsoft Learn</p>
+                    <div class="certificate-description">
+                        Achieved Microsoft technology associate-level credentials, demonstrating proficiency in Azure, AI fundamentals, and developer tools.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/" class="btn btn-secondary btn-small">View on LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- AWS certificates -->
+                <div class="certificate-card card">
+                    <div class="certificate-img">
+                        <img src="certificate-aws.jpg" alt="AWS Certificates">
+                        <div class="certificate-overlay">
+                            <span style="color: white; font-weight: 600;">AWS</span>
+                        </div>
+                    </div>
+                    <h3>AWS Certificates</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Amazon Web Services (AWS)</p>
+                    <div class="certificate-description">
+                        Cloud practitioner and specialty certifications validating expertise in AWS cloud architecture, development, and machine learning.
+                    </div>
+                    <div class="cert-links">
+                        <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/" class="btn btn-secondary btn-small">View on LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <h2>My Web Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-cia-triad.jpg" alt="CIA Triad Article">
+                    </div>
+                    <h3>CIA Triad: Safeguarding Our Information</h3>
+                    <p>An exploration of the fundamental principles of information security - Confidentiality, Integrity, and Availability.</p>
+                    <a href="https://medium.com/@dulanachathurma99/cia-triad-safeguarding-our-inforation-576563e3dbd3" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-diagrams.jpg" alt="Importance of Diagrams Article">
+                    </div>
+                    <h3>The Importance of Diagrams</h3>
+                    <p>Discover how diagrams simplify complex ideas, improve understanding, and play a vital role in communication, learning, and software development.</p>
+                    <a href="https://medium.com/@dulanachathurma99/the-importance-of-diagrams-868b1fb153ee" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-banking-use-case.jpg" alt="Banking System Use Case Diagram">
+                    </div>
+                    <h3>Understanding the Importance of a Banking System Use Case Diagram</h3>
+                    <p>A clear look into why use case diagrams are essential for modeling banking systems, improving design clarity and communication.</p>
+                    <a href="https://medium.com/@dulanachathurma99/understanding-the-importance-of-a-banking-system-use-case-diagram-ffe6a938a53f" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+                <div class="article-card card">
+                    <div class="article-img">
+                        <img src="article-elephant-warning-system.jpg" alt="Elephant Warning System Article">
+                    </div>
+                    <h3>🐘 Elephant Early Warning System in Railway Transport</h3>
+                    <p>How technology is being used to prevent elephant-train collisions in Sri Lanka.</p>
+                    <a href="https://medium.com/@dulanachathurma99/elephant-early-warning-system-in-railway-transport-5b7149200a8c" class="btn btn-primary btn-small">View on Medium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.207289909686!2d80.75844177499636!3d6.049260593952773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae142b6c8b5b5a5%3A0x8a0b8c8c8c8c8c8c!2sKopiwatta%2C%20Getamanna%2C%20Beliatta!5e0!3m2!1sen!2slk!4v1690000000000!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="contact-details">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always open to collaborations. Don't hesitate to connect, even if it's just to say hello.</p>
+                    
+                    <div class="contact-info">
+                        <h4>My Address</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Kopiwatta, Getamanna, Beliatta, Hambantota District, Sri Lanka</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+94 76 75 74 844</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dulanachathurma99@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-icons">
+                        <a href="mailto:dulanachathurma99@gmail.com" class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                            <span class="contact-label">Email</span>
+                        </a>
+                        <a href="https://linkedin.com/in/dulana-chathurma" class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span class="contact-label">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/dulanachathurma" class="contact-icon">
+                            <i class="fab fa-github"></i>
+                            <span class="contact-label">GitHub</span>
+                        </a>
+                        <a href="https://medium.com/@dulanachathurma99" class="contact-icon">
+                            <i class="fab fa-medium-m"></i>
+                            <span class="contact-label">Medium</span>
+                        </a>
+                        <a href="https://wa.me/94767574844" class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="contact-label">WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">DC</div>
+                <p class="copyright">© 2025 Dulana Chathurma. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Dark mode toggle
-        const toggleBtn = document.getElementById('themeToggle');
-        const iconSpan = toggleBtn.querySelector('i');
-        if(localStorage.getItem('theme') === 'dark') {
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply the saved theme
+        if (currentTheme === 'dark') {
             document.body.classList.add('dark-mode');
-            iconSpan.classList.remove('fa-moon'); iconSpan.classList.add('fa-sun');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
-        toggleBtn.addEventListener('click',()=>{
+        
+        // Toggle theme function
+        themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            if(document.body.classList.contains('dark-mode')){
-                localStorage.setItem('theme','dark');
-                iconSpan.classList.remove('fa-moon'); iconSpan.classList.add('fa-sun');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
             } else {
-                localStorage.setItem('theme','light');
-                iconSpan.classList.remove('fa-sun'); iconSpan.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
             }
         });
 
-        // typing effect - no emojis in text
-        const typedSpan = document.querySelector('.typed-text');
-        const fullText = "Aspiring AI/ML Software Engineer | Enthusiastic about Mobile App Design & Development | Pursuing B.Sc (Honours) in Software Engineering (UG) – University of Kelaniya";
-        let idx = 0;
-        function typeWriter(){
-            if(idx < fullText.length){
-                typedSpan.textContent += fullText.charAt(idx);
-                idx++;
-                setTimeout(typeWriter, 40);
+        // Auto Typing Effect
+        const typedTextSpan = document.querySelector('.typed-text');
+        const cursorSpan = document.querySelector('.cursor');
+        
+        const textArray = [
+            "Aspiring AI/ML Software Engineer | Enthusiastic about Mobile App Design & Development | Pursuing B.Sc (Honours) in Software Engineering (UG) – University of Kelaniya"
+        ];
+        const typingDelay = 50;
+        const erasingDelay = 10;
+        const newTextDelay = 2000;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+        
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } 
+            else {
+                cursorSpan.classList.remove("typing");
+                setTimeout(erase, newTextDelay);
             }
         }
-        setTimeout(typeWriter, 400);
-
-        // snow
-        function createSnow(){
-            const container = document.getElementById('snowContainer');
-            for(let i=0;i<130;i++){
-                const snow = document.createElement('div');
-                snow.classList.add('snowflake');
-                snow.style.left = Math.random()*100+'%';
-                snow.style.animationDuration = 5+Math.random()*12+'s';
-                snow.style.animationDelay = Math.random()*8+'s';
-                snow.style.width = 2+Math.random()*6+'px';
-                snow.style.height = snow.style.width;
-                snow.style.opacity = 0.4+Math.random()*0.5;
-                container.appendChild(snow);
+        
+        function erase() {
+            if (charIndex > 0) {
+                if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } 
+            else {
+                cursorSpan.classList.remove("typing");
+                textArrayIndex++;
+                if(textArrayIndex>=textArray.length) textArrayIndex=0;
+                setTimeout(type, typingDelay + 1100);
             }
         }
-        createSnow();
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            if(textArray.length) setTimeout(type, newTextDelay + 250);
+        });
 
-        // mobile nav
+        // Snow Animation
+        function createSnow() {
+            const snowContainer = document.getElementById('snowContainer');
+            const snowCount = 150;
+            
+            for (let i = 0; i < snowCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const animationDuration = 5 + Math.random() * 15;
+                const animationDelay = Math.random() * 10;
+                const size = 2 + Math.random() * 6;
+                const opacity = 0.3 + Math.random() * 0.7;
+                
+                snowflake.style.left = `${left}%`;
+                snowflake.style.animationDuration = `${animationDuration}s`;
+                snowflake.style.animationDelay = `${animationDelay}s`;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.opacity = opacity;
+                
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        // Initialize snow animation
+        document.addEventListener('DOMContentLoaded', function() {
+            createSnow();
+        });
+
+        // Mobile Navigation Toggle (Slide-out style)
         const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-links');
-        hamburger.addEventListener('click',()=>navMenu.classList.toggle('active'));
-        document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>navMenu.classList.remove('active')));
+        const navLinks = document.querySelector('.nav-links');
 
-        // smooth scroll for internal anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-            anchor.addEventListener('click',function(e){
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links (only for same-page navigation)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default and smooth scroll if it's a same-page link
+                // (target="_blank" links will open in new tab without smooth scroll)
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                const targetEl = document.querySelector(targetId);
-                if(targetEl){
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
                     e.preventDefault();
-                    window.scrollTo({top: targetEl.offsetTop-80, behavior:'smooth'});
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll animations - Optimized for performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    requestAnimationFrame(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation - optimized batch
+        setTimeout(() => {
+            document.querySelectorAll('.card, h2, .skill-card, .project-card, .certificate-card, .article-card, .contact-icon, .education-card, .experience-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }, 100);
+
+        // Performance optimization: lazy loading for images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        }
+
+        // Optimize snow animation for mobile
+        function optimizeSnowForMobile() {
+            const snowContainer = document.getElementById('snowContainer');
+            if (window.innerWidth <= 768) {
+                // Reduce snowflakes on mobile
+                const snowflakes = document.querySelectorAll('.snowflake');
+                const mobileSnowCount = Math.min(snowflakes.length, 80);
+                
+                // Remove excess snowflakes
+                for (let i = mobileSnowCount; i < snowflakes.length; i++) {
+                    if (snowflakes[i]) {
+                        snowContainer.removeChild(snowflakes[i]);
+                    }
+                }
+                
+                // Adjust animation for mobile
+                const remainingSnowflakes = document.querySelectorAll('.snowflake');
+                remainingSnowflakes.forEach(snowflake => {
+                    const currentDuration = parseFloat(snowflake.style.animationDuration);
+                    if (currentDuration > 10) {
+                        snowflake.style.animationDuration = `${currentDuration * 0.7}s`;
+                    }
+                });
+            }
+        }
+
+        // Call optimization on load and resize
+        window.addEventListener('load', optimizeSnowForMobile);
+        window.addEventListener('resize', optimizeSnowForMobile);
     </script>
 </body>
 </html>
