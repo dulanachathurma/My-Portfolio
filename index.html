@@ -46,11 +46,7 @@
             --professional-gray: #1e293b;
             --professional-gray-dark: #0f172a;
         }
-        .project-card {
-    width: 280px;   /* මෙහෙම width අඩු කරන්න */
-    max-width: 100%;
-    margin: 0 auto; /* center කරන්න */
-}
+ 
 
         /* Base Styles */
         * {
@@ -363,6 +359,13 @@
         }
 
         /* Mobile Responsive */
+
+        @media (max-width: 600px) {
+    .project-card {
+        width: 90%;    
+        padding: 10px;   
+    }
+}
         @media (max-width: 768px) {
             body {
                 overflow-x: hidden;
