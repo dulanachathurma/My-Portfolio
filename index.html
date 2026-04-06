@@ -210,7 +210,7 @@
             transform: translateY(-10px);
         }
 
-        /* Dark Mode Toggle - Positioned in top bar */
+        /* Dark Mode Toggle */
         .theme-toggle {
             position: fixed;
             top: 18px;
@@ -345,22 +345,35 @@
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary);
             z-index: 1003;
         }
 
-        /* Mobile Navigation Menu */
+        /* Mobile Navigation Menu - Hamburger Center, Menu Left Slide-out */
         @media (max-width: 768px) {
+            nav {
+                justify-content: center;
+                position: relative;
+            }
+            
+            .logo {
+                position: absolute;
+                left: 0;
+            }
+            
             .hamburger {
                 display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .nav-links {
                 position: fixed;
                 top: 70px;
-                left: -100%;
-                width: 250px;
+                left: -280px;
+                width: 260px;
                 height: calc(100vh - 70px);
                 background: var(--card-bg);
                 flex-direction: column;
@@ -369,6 +382,7 @@
                 transition: left 0.3s ease;
                 z-index: 999;
                 overflow-y: auto;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             }
             
             .nav-links.active {
@@ -384,12 +398,13 @@
                 display: block;
                 width: 100%;
                 padding: 8px 0;
+                text-align: left;
             }
             
             /* Adjust theme toggle for mobile */
             .theme-toggle {
                 top: 15px;
-                right: 70px;
+                right: 20px;
                 width: 35px;
                 height: 35px;
             }
@@ -1169,17 +1184,6 @@
                 gap: 1rem;
             }
 
-            .theme-toggle {
-                top: 15px;
-                right: 60px;
-                width: 35px;
-                height: 35px;
-            }
-            
-            .theme-toggle i {
-                font-size: 1rem;
-            }
-            
             .container {
                 width: 95%;
                 padding: 0 15px;
@@ -1249,7 +1253,7 @@
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle - Positioned at top right of home page -->
+    <!-- Dark Mode Toggle -->
     <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
     </div>
@@ -1265,6 +1269,9 @@
                     <img src="logo-dc.png" alt="DC Logo">
                     DC
                 </div>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#home" target="_blank">Home</a></li>
                     <li><a href="#about" target="_blank">About</a></li>
@@ -1276,9 +1283,6 @@
                     <li><a href="#articles" target="_blank">Articles</a></li>
                     <li><a href="#contact" target="_blank">Contact</a></li>
                 </ul>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
             </nav>
         </div>
     </header>
@@ -1335,7 +1339,6 @@
         <div class="container">
             <h2>Education</h2>
             <div class="education-grid">
-                <!-- University Education -->
                 <div class="education-card card">
                     <div class="education-img">
                         <img src="education-software-engineering.jpg" alt="Software Engineering">
@@ -1365,7 +1368,6 @@
                     </div>
                 </div>
 
-                <!-- A/L Education -->
                 <div class="education-card card">
                     <div class="education-img">
                         <img src="education-al.jpg" alt="G.C.E Advanced Level">
@@ -1390,7 +1392,6 @@
         <div class="container">
             <h2>Experience</h2>
             <div class="experience-grid">
-                <!-- Experience 1 -->
                 <div class="experience-card card">
                     <div class="experience-img">
                         <img src="experience-gavel-club.jpg" alt="Gavel Club">
@@ -1406,7 +1407,6 @@
                     </div>
                 </div>
 
-                <!-- Experience 2 -->
                 <div class="experience-card card">
                     <div class="experience-img">
                         <img src="experience-environmental-authority.jpg" alt="Environmental Authority">
@@ -1499,7 +1499,6 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
-                <!-- CarePoint Medical Center Website -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-medical-center.jpg" alt="CarePoint Medical Center">
@@ -1507,18 +1506,15 @@
                     <h3>CarePoint Medical Center</h3>
                     <p><i class="far fa-calendar-alt"></i> 2026</p>
                     <p>Modern healthcare web application designed for easy doctor search, appointment booking, and seamless patient experience.</p>
-                    
                     <div class="project-tools">
                         <div class="tool">HTML5</div>
                         <div class="tool">CSS3</div>
                         <div class="tool">JavaScript</div>
                     </div>
-
                     <p>Features doctor search, online appointment booking, secure payment simulation, ambulance contact access, and a fully responsive user interface.</p>
-
                     <a href="https://dulanamedical.netlify.app" class="btn btn-primary btn-small" target="_blank">View Website</a>
                 </div>
-                <!-- Amazon Clone Website -->
+
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-amazon-clone.jpg" alt="Amazon Clone Website">
@@ -1526,18 +1522,15 @@
                     <h3>Amazon Clone Website</h3>
                     <p><i class="far fa-calendar-alt"></i> 2026</p>
                     <p>A simple e-commerce web application inspired by Amazon, designed to simulate an online shopping experience with a clean and interactive interface.</p>
-                    
                     <div class="project-tools">
                         <div class="tool">HTML5</div>
                         <div class="tool">CSS3</div>
                         <div class="tool">JavaScript</div>
                     </div>
-
                     <p>Features product browsing, add-to-cart functionality, responsive layout, and interactive UI elements. Fully frontend-based with no backend integration.</p>
-
                     <a href="https://github.com/dulanachathurma/Amazon-Clone" class="btn btn-primary btn-small" target="_blank">View Project</a>
                 </div>
-                <!-- User Management Application -->
+
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-user-management.jpg" alt="User Management Application">
@@ -1558,7 +1551,6 @@
                     <a href="https://github.com/dulanachathurma/User-Management-Application" class="btn btn-primary btn-small" target="_blank">View on GitHub</a>
                 </div>
 
-                <!-- Sriseta Official Website -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-astrology-website.jpg" alt="Sriseta Official Website">
@@ -1576,7 +1568,6 @@
                     <a href="https://dulanachathurma.github.io/Astrology-Services-App/" class="btn btn-primary btn-small" target="_blank">View Website</a>
                 </div>
 
-                <!-- TravelScope Website -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-travelscope.jpg" alt="TravelScope Website">
@@ -1594,7 +1585,6 @@
                     <a href="https://dulanachathurma.github.io/TravelScope/#home" class="btn btn-primary btn-small" target="_blank">View Website</a>
                 </div>
 
-                <!-- WeatherSphere Pro App -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-weather-app.jpg" alt="WeatherSphere Pro App">
@@ -1613,7 +1603,6 @@
                     <a href="https://dulanachathurma.github.io/WeatherSphere-Pro/" class="btn btn-primary btn-small" target="_blank">View Website</a>
                 </div>
                 
-                <!-- Todo App Project -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-todo-app.jpg" alt="Todo App">
@@ -1627,7 +1616,6 @@
                     <a href="https://github.com/dulanachathurma/Todo-App" class="btn btn-primary btn-small" target="_blank">View on GitHub</a>
                 </div>
                 
-                <!-- ATM Mini Project -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-atm-system.jpg" alt="ATM Mini Project">
@@ -1641,7 +1629,6 @@
                     <a href="https://github.com/dulanachathurma/ATM-Bank-Project-System" class="btn btn-primary btn-small" target="_blank">View on GitHub</a>
                 </div>
 
-                <!-- AI Career & University Recommendation System -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-ai-career.jpg" alt="AI Career & University Recommendation">
@@ -1661,12 +1648,11 @@
                     <a href="https://medium.com/@dulanachathurma99/ai-career-university-recommendation-system-2cfafe7d9842" class="btn btn-primary btn-small" target="_blank">(View Project)</a>
                 </div>
 
-                <!-- YouTube Frontend UI Clone -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-youtube-clone.jpg" alt="YouTube Frontend UI Clone">
                     </div>
-                    <h3>YouTube Frontend UI Clone (Live Demo )</h3>
+                    <h3>YouTube Frontend UI Clone (Live Demo 🚀)</h3>
                     <p><i class="far fa-calendar-alt"></i> 2025</p>
                     <p>YouTube‑inspired homepage UI, built entirely with HTML5 & CSS3!</p>
                     <div class="project-tools">
@@ -1678,7 +1664,6 @@
                     <a href="https://dulanachathurma.github.io/YouTube-Interface/" class="btn btn-primary btn-small" target="_blank">Live Demo</a>
                 </div>
                 
-                <!-- Intelligent-Career-Skill-Analysis-Platform -->
                 <div class="project-card card">
                     <div class="project-img">
                         <img src="project-nexgenai.jpg" alt="Intelligent Career Skill Analysis Platform">
@@ -1686,7 +1671,7 @@
                     <h3>Intelligent Career Skill Analysis Platform</h3>
                     <p><i class="far fa-calendar-alt"></i> Feb 2026 – Mar 2026</p>
                     <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya Sri Lanka</p>
-                    <p> <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
+                    <p>🚀 <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
                     <div class="project-tools">
                         <div class="tool">React</div>
                         <div class="tool">TailwindCSS</div>
@@ -1706,7 +1691,6 @@
         <div class="container">
             <h2>Certificates</h2>
             <div class="certificates-grid">
-                <!-- Certificate 2 -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-online-courses.jpg" alt="Online Certification Course">
@@ -1732,7 +1716,6 @@
                     </div>
                 </div>
 
-                <!-- Certificate 3 -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-english-diploma.jpg" alt="Diploma in English">
@@ -1755,7 +1738,6 @@
                     <a href="https://www.linkedin.com/in/dulana-chathurma/details/certifications/1759555692945/single-media-viewer?type=IMAGE&profileId=ACoAAFDfMasBoGUec8AKadGJzB74e0K0BTBPegE&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B6%2F3MCckeTRKaqqD0C%2FXBXA%3D%3D" class="btn btn-secondary btn-small" target="_blank">View Certificate</a>
                 </div>
 
-                <!-- Certificate 4 -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-udemy-courses.jpg" alt="Udemy Courses">
@@ -1778,7 +1760,6 @@
                     </div>
                 </div>
 
-                <!-- Certificate 5 -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-hackerrank.jpg" alt="HackerRank Certifications">
@@ -1797,7 +1778,6 @@
                     </div>
                 </div>
 
-                <!-- Microsoft Certificates -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-microsoft.jpg" alt="Microsoft Certificates">
@@ -1815,7 +1795,6 @@
                     </div>
                 </div>
 
-                <!-- AWS certificates -->
                 <div class="certificate-card card">
                     <div class="certificate-img">
                         <img src="certificate-aws.jpg" alt="AWS Certificates">
@@ -1953,17 +1932,14 @@
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         
-        // Check for saved theme preference or default to light
         const currentTheme = localStorage.getItem('theme') || 'light';
         
-        // Apply the saved theme
         if (currentTheme === 'dark') {
             document.body.classList.add('dark-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
         }
         
-        // Toggle theme function
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             
@@ -2032,7 +2008,6 @@
                 const snowflake = document.createElement('div');
                 snowflake.classList.add('snowflake');
                 
-                // Random properties
                 const left = Math.random() * 100;
                 const animationDuration = 5 + Math.random() * 15;
                 const animationDelay = Math.random() * 10;
@@ -2050,12 +2025,11 @@
             }
         }
 
-        // Initialize snow animation
         document.addEventListener('DOMContentLoaded', function() {
             createSnow();
         });
 
-        // Mobile Navigation Toggle (Slide-out style)
+        // Mobile Navigation Toggle - Left Slide-out
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
@@ -2063,18 +2037,15 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // Smooth scrolling for anchor links (only for same-page navigation)
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // Only prevent default and smooth scroll if it's a same-page link
-                // (target="_blank" links will open in new tab without smooth scroll)
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
@@ -2099,7 +2070,7 @@
             }
         });
 
-        // Scroll animations - Optimized for performance
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2116,7 +2087,6 @@
             });
         }, observerOptions);
 
-        // Observe elements for animation - optimized batch
         setTimeout(() => {
             document.querySelectorAll('.card, h2, .skill-card, .project-card, .certificate-card, .article-card, .contact-icon, .education-card, .experience-card').forEach(el => {
                 el.style.opacity = '0';
@@ -2126,7 +2096,6 @@
             });
         }, 100);
 
-        // Performance optimization: lazy loading for images
         if ('loading' in HTMLImageElement.prototype) {
             const images = document.querySelectorAll('img');
             images.forEach(img => {
@@ -2134,22 +2103,18 @@
             });
         }
 
-        // Optimize snow animation for mobile
         function optimizeSnowForMobile() {
             const snowContainer = document.getElementById('snowContainer');
             if (window.innerWidth <= 768) {
-                // Reduce snowflakes on mobile
                 const snowflakes = document.querySelectorAll('.snowflake');
                 const mobileSnowCount = Math.min(snowflakes.length, 80);
                 
-                // Remove excess snowflakes
                 for (let i = mobileSnowCount; i < snowflakes.length; i++) {
                     if (snowflakes[i]) {
                         snowContainer.removeChild(snowflakes[i]);
                     }
                 }
                 
-                // Adjust animation for mobile
                 const remainingSnowflakes = document.querySelectorAll('.snowflake');
                 remainingSnowflakes.forEach(snowflake => {
                     const currentDuration = parseFloat(snowflake.style.animationDuration);
@@ -2160,7 +2125,6 @@
             }
         }
 
-        // Call optimization on load and resize
         window.addEventListener('load', optimizeSnowForMobile);
         window.addEventListener('resize', optimizeSnowForMobile);
     </script>
