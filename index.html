@@ -350,40 +350,54 @@
             z-index: 1003;
         }
 
-        /* Mobile Navigation Menu */
+        /* Mobile Navigation Menu - Centered */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
             }
             
+            nav {
+                justify-content: space-between;
+                position: relative;
+            }
+            
             .nav-links {
                 position: fixed;
                 top: 70px;
-                left: -100%;
-                width: 250px;
-                height: calc(100vh - 70px);
+                left: 0;
+                width: 100%;
                 background: var(--card-bg);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 2rem 1.5rem;
-                transition: left 0.3s ease;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem 0;
+                transition: all 0.3s ease;
                 z-index: 999;
-                overflow-y: auto;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                box-shadow: none;
             }
             
             .nav-links.active {
-                left: 0;
+                max-height: 500px;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
             
             .nav-links li {
                 margin: 0.8rem 0;
                 width: 100%;
+                text-align: center;
             }
             
             .nav-links a {
                 display: block;
                 width: 100%;
                 padding: 8px 0;
+                text-align: center;
             }
             
             /* Adjust theme toggle for mobile */
@@ -396,6 +410,11 @@
             
             .theme-toggle i {
                 font-size: 1rem;
+            }
+            
+            /* Center logo on mobile */
+            .logo {
+                flex: 1;
             }
         }
 
@@ -1666,7 +1685,7 @@
                     <div class="project-img">
                         <img src="project-youtube-clone.jpg" alt="YouTube Frontend UI Clone">
                     </div>
-                    <h3>YouTube Frontend UI Clone (Live Demo )</h3>
+                    <h3>YouTube Frontend UI Clone (Live Demo 🚀)</h3>
                     <p><i class="far fa-calendar-alt"></i> 2025</p>
                     <p>YouTube‑inspired homepage UI, built entirely with HTML5 & CSS3!</p>
                     <div class="project-tools">
@@ -1686,7 +1705,7 @@
                     <h3>Intelligent Career Skill Analysis Platform</h3>
                     <p><i class="far fa-calendar-alt"></i> Feb 2026 – Mar 2026</p>
                     <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya Sri Lanka</p>
-                    <p> <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
+                    <p>🚀 <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
                     <div class="project-tools">
                         <div class="tool">React</div>
                         <div class="tool">TailwindCSS</div>
@@ -2055,7 +2074,7 @@
             createSnow();
         });
 
-        // Mobile Navigation Toggle (Slide-out style)
+        // Mobile Navigation Toggle (Centered dropdown style)
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
