@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Dulana Chathurma | AI/ML Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
             --professional-gray-dark: #0f172a;
         }
 
-        /* Base Styles */
+        /* Base Styles - Prevent horizontal scroll */
         * {
             margin: 0;
             padding: 0;
@@ -56,6 +56,8 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -64,6 +66,7 @@
             color: var(--text-color);
             background-color: var(--bg-color);
             overflow-x: hidden;
+            width: 100%;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -77,6 +80,7 @@
         section {
             padding: 100px 0;
             position: relative;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
@@ -210,7 +214,7 @@
             transform: translateY(-10px);
         }
 
-        /* Dark Mode Toggle */
+        /* Dark Mode Toggle - Desktop */
         .theme-toggle {
             position: fixed;
             top: 18px;
@@ -225,6 +229,7 @@
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .theme-toggle:hover {
@@ -273,7 +278,7 @@
             }
         }
 
-        /* Header & Navigation */
+        /* Header & Navigation - Fixed/Sticky */
         header {
             position: fixed;
             top: 0;
@@ -350,23 +355,35 @@
             z-index: 1003;
         }
 
-        /* Mobile Navigation Menu - Hamburger Center, Menu Left Slide-out */
+        /* Mobile Responsive - No Horizontal Scroll */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            
+            .container {
+                width: 92%;
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
             nav {
-                justify-content: center;
+                justify-content: space-between;
                 position: relative;
             }
             
             .logo {
-                position: absolute;
+                position: relative;
                 left: 0;
             }
             
             .hamburger {
                 display: block;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
+                position: relative;
+                right: 0;
             }
             
             .nav-links {
@@ -401,16 +418,210 @@
                 text-align: left;
             }
             
-            /* Adjust theme toggle for mobile */
+            /* Theme Toggle - Centered on Mobile */
             .theme-toggle {
-                top: 15px;
-                right: 20px;
-                width: 35px;
-                height: 35px;
+                position: fixed;
+                top: 50%;
+                right: auto;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 45px;
+                height: 45px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                z-index: 1003;
             }
             
             .theme-toggle i {
-                font-size: 1rem;
+                font-size: 1.3rem;
+            }
+            
+            /* Hero Section Mobile */
+            .hero {
+                padding-top: 150px;
+                min-height: 90vh;
+            }
+            
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+            
+            .tags {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                padding: 0 10px;
+            }
+            
+            .tag {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+            
+            /* About Section Mobile */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-img {
+                height: 350px;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            /* Grid Layouts Mobile */
+            .education-grid,
+            .experience-grid,
+            .projects-grid,
+            .certificates-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+            
+            /* Cards Mobile */
+            .card {
+                padding: 20px;
+            }
+            
+            .project-img,
+            .certificate-img,
+            .article-img {
+                margin: -20px -20px 20px;
+            }
+            
+            /* Contact Section Mobile */
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-map {
+                height: 300px;
+            }
+            
+            .contact-icons {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+            
+            .contact-label {
+                font-size: 0.6rem;
+                bottom: -25px;
+            }
+            
+            /* Footer Mobile */
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .footer-links a {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Tablet Devices */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .theme-toggle {
+                top: 18px;
+                right: 80px;
+                width: 42px;
+                height: 42px;
+            }
+            
+            .theme-toggle i {
+                font-size: 1.3rem;
+            }
+            
+            .projects-grid,
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Large Mobile Devices */
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 0 12px;
+            }
+            
+            .theme-toggle {
+                width: 42px;
+                height: 42px;
+            }
+            
+            .theme-toggle i {
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .btn {
+                width: 180px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 360px) {
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .theme-toggle i {
+                font-size: 1.1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+            
+            .section h2 {
+                font-size: 1.6rem;
             }
         }
 
@@ -498,12 +709,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            padding: 0 15px;
         }
 
         .typed-text {
             font-weight: 500;
             color: white;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-size: 1rem;
+            text-align: center;
         }
 
         .cursor {
@@ -527,6 +742,7 @@
             gap: 1rem;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease 0.4s both;
+            flex-wrap: wrap;
         }
 
         .tags {
@@ -631,6 +847,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .education-skills {
@@ -694,6 +911,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .experience-description {
@@ -938,6 +1156,7 @@
             gap: 1rem;
             margin-bottom: 1rem;
             justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
         .contact-item i {
@@ -1031,6 +1250,8 @@
             display: flex;
             gap: 1.5rem;
             margin: 1rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-links a {
@@ -1105,149 +1326,6 @@
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 200px;
-            }
-
-            .contact-icons {
-                gap: 1.5rem;
-            }
-
-            .contact-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .certificates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 150px;
-                min-height: 90vh;
-            }
-            
-            .profile-img {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-            
-            .tags {
-                padding: 0 10px;
-            }
-            
-            .tag {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 70px 0;
-            }
-            
-            .projects-grid,
-            .certificates-grid,
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-icons {
-                gap: 1rem;
-            }
-
-            .container {
-                width: 95%;
-                padding: 0 15px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .project-img,
-            .certificate-img,
-            .article-img {
-                margin: -20px -20px 20px;
-            }
-            
-            .education-grid,
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 1rem;
-            }
-            
-            .contact-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .contact-label {
-                font-size: 0.6rem;
-                bottom: -25px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .contact-icons {
-                gap: 0.8rem;
-            }
-            
-            .contact-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
             }
         }
     </style>
@@ -1652,7 +1730,7 @@
                     <div class="project-img">
                         <img src="project-youtube-clone.jpg" alt="YouTube Frontend UI Clone">
                     </div>
-                    <h3>YouTube Frontend UI Clone (Live Demo)</h3>
+                    <h3>YouTube Frontend UI Clone (Live Demo 🚀)</h3>
                     <p><i class="far fa-calendar-alt"></i> 2025</p>
                     <p>YouTube‑inspired homepage UI, built entirely with HTML5 & CSS3!</p>
                     <div class="project-tools">
@@ -1671,7 +1749,7 @@
                     <h3>Intelligent Career Skill Analysis Platform</h3>
                     <p><i class="far fa-calendar-alt"></i> Feb 2026 – Mar 2026</p>
                     <p><i class="fas fa-map-marker-alt"></i> University of Kelaniya Sri Lanka</p>
-                    <p><strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
+                    <p>🚀 <strong>NexGenAI is LIVE!</strong> An AI-powered career platform that analyzes CVs, maps skills intelligently, and provides career recommendations along with ATS scores in seconds.</p>
                     <div class="project-tools">
                         <div class="tool">React</div>
                         <div class="tool">TailwindCSS</div>
@@ -1848,7 +1926,7 @@
                     <div class="article-img">
                         <img src="article-elephant-warning-system.jpg" alt="Elephant Warning System Article">
                     </div>
-                    <h3> Elephant Early Warning System in Railway Transport</h3>
+                    <h3>🐘 Elephant Early Warning System in Railway Transport</h3>
                     <p>How technology is being used to prevent elephant-train collisions in Sri Lanka.</p>
                     <a href="https://medium.com/@dulanachathurma99/elephant-early-warning-system-in-railway-transport-5b7149200a8c" class="btn btn-primary btn-small" target="_blank">View on Medium</a>
                 </div>
@@ -2029,7 +2107,7 @@
             createSnow();
         });
 
-        // Mobile Navigation Toggle - Left Slide-out
+        // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
