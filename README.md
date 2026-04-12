@@ -5,7 +5,7 @@ It includes my introduction, skills, projects, certifications, and contact detai
 
 ## Live Website
 https://dulanachathurma.github.io/My-Portfolio/
-
+https://dportfolios.netlify.app
 ## About Me
 I am Dulana Chathurma, an undergraduate student pursuing a B.Sc. (Honours) in Software Engineering.  
 I am interested in AI/ML, mobile app development, problem-solving, and building useful software projects.
